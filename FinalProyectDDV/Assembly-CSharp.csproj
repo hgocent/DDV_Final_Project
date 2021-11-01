@@ -36,21 +36,24 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGFXCycler.cs" />
-     <Compile Include="Assets\Scripts\PickableObjects.cs" />
-     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFade.cs" />
-     <Compile Include="Assets\Scripts\RHWeapon.cs" />
-     <Compile Include="Assets\Low Poly Guns\Scripts\GunView.cs" />
-     <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGSceneSelect.cs" />
-     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFlicker.cs" />
-     <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Player\PickupObject.cs" />
      <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXRotation.cs" />
-     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXPortalScript.cs" />
-     <Compile Include="Assets\Scripts\PickupObject.cs" />
-     <Compile Include="Assets\Scripts\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Low Poly Guns\Scripts\GunsMenu.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGFXLoopScript.cs" />
+     <Compile Include="Assets\Scripts\Player\PickableObjects.cs" />
+     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFade.cs" />
+     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFlicker.cs" />
+     <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGSceneSelect.cs" />
+     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXPortalScript.cs" />
+     <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGFXCycler.cs" />
+     <Compile Include="Assets\Scripts\Player\RHWeapon.cs" />
+     <Compile Include="Assets\Low Poly Guns\Scripts\GunView.cs" />
+     <Compile Include="Assets\Scripts\Player\ThirdPersonCamera.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
+     <Compile Include="Assets\Scripts\Enemies\NextPoint.cs" />
      <None Include="Assets\HighQualityBricks&amp;Walls\Shaders\wood-877000.shader" />
      <None Include="Assets\HighQualityBricks&amp;Walls\Shaders\tile-846018.shader" />
      <None Include="Assets\HighQualityBricks&amp;Walls\Shaders\patch-924648.shader" />
