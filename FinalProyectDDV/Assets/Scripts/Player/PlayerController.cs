@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 camRight;
     private Vector3 movePlayer;
 
+    private bool isWalk = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +39,10 @@ public class PlayerController : MonoBehaviour
 
      camDirection();
 
-     movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+     //movePlayer = playerInput.x * camRight + playerInput.z * camForward;
 
-     movePlayer = movePlayer * playerSpeed;
+     MovePlayer();
+     //movePlayer = movePlayer * playerSpeed;
 
      player.transform.LookAt(player.transform.position + movePlayer);
 
@@ -99,7 +102,12 @@ public class PlayerController : MonoBehaviour
            Weapon[1].SetActive(true);
        } 
        }
-   
+    void MovePlayer()
+    {
+        isWalk = true;
+        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+        movePlayer = movePlayer * playerSpeed;
+    }
 
 
 
