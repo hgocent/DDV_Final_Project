@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PlayerInteractionZone
   - Waypoint
+  - Portal
+  - PlayerL1
+  - PlayerL1a
   layers:
   - Default
   - TransparentFX
