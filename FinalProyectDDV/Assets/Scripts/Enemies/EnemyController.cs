@@ -9,8 +9,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float shootCooldown = 0.5f;
     [SerializeField] private float timeShoot = 1f;
     [SerializeField] private GameObject bulletPrefab;
+           
     private bool canShoot = true;
-    //private float timeBullet = 0f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +24,17 @@ public class EnemyController : MonoBehaviour
         if (canShoot)
         {
             RaycastWeapon();
+            
         }
         else{
-            timeShoot += Time.deltaTime;            
+            timeShoot += Time.deltaTime;
+                        
         }
         if (timeShoot > shootCooldown )
         {
-            canShoot = true;
+            canShoot = true;    
         }
+        
 
 
 
@@ -44,8 +48,9 @@ public class EnemyController : MonoBehaviour
         
         if(Physics.Raycast(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward), out hit, distanceRay) && hit.collider.tag.Equals("PlayerL1"))
         {
+            
             canShoot = false;
-            timeShoot = 0;
+            timeShoot = 0;            
             GameObject b = Instantiate(bulletPrefab, shootOrigin.transform.position, bulletPrefab.transform.rotation);
             b.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.TransformDirection(Vector3.forward) * distanceRay, ForceMode.Impulse);
             

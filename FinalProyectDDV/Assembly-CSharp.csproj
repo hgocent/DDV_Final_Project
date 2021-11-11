@@ -45,6 +45,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerBasics\MoveBehaviour.cs" />
      <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFade.cs" />
      <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFlicker.cs" />
+     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
      <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGSceneSelect.cs" />
      <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXPortalScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBasics\AimBehaviourBasic.cs" />
@@ -53,7 +54,7 @@
      <Compile Include="Assets\Soldier_Guns\Scripts\GunView.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonOrbitCamBasic.cs" />
      <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
-     <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\Enemies\BulletControl.cs" />
      <None Include="Assets\Wall&amp;Floor_Text\Shaders\wood-877000.shader" />
      <None Include="Assets\Wall&amp;Floor_Text\Shaders\tile-846018.shader" />
      <None Include="Assets\Wall&amp;Floor_Text\Shaders\patch-924648.shader" />
