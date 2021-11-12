@@ -36,43 +36,26 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXRotation.cs" />
+     <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXRotation.cs" />
      <Compile Include="Assets\Soldier_Guns\Scripts\GunsMenu.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBasics\BasicBehaviour.cs" />
      <Compile Include="Assets\Scripts\SceneController.cs" />
-     <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGFXLoopScript.cs" />
+     <Compile Include="Assets\Efectos_Prueba\Demo\Scripts\ARPGFXLoopScript.cs" />
+     <Compile Include="Assets\Scripts\Enemies\BulletControl.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBasics\MoveBehaviour.cs" />
-     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFade.cs" />
-     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXLightFlicker.cs" />
+     <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXLightFade.cs" />
+     <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXLightFlicker.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
-     <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGSceneSelect.cs" />
-     <Compile Include="Assets\ARPG Effects\Scripts\ARPGFXPortalScript.cs" />
+     <Compile Include="Assets\Efectos_Prueba\Demo\Scripts\ARPGSceneSelect.cs" />
+     <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXPortalScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBasics\AimBehaviourBasic.cs" />
      <Compile Include="Assets\Scripts\Enemies\NextPoint.cs" />
-     <Compile Include="Assets\ARPG Effects\Demo\Scripts\ARPGFXCycler.cs" />
+     <Compile Include="Assets\Efectos_Prueba\Demo\Scripts\ARPGFXCycler.cs" />
      <Compile Include="Assets\Soldier_Guns\Scripts\GunView.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonOrbitCamBasic.cs" />
      <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
-     <Compile Include="Assets\Scripts\Enemies\BulletControl.cs" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\wood-877000.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\tile-846018.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\patch-924648.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\bricks-868344.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\README.txt" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\wood-938698.shader" />
-     <None Include="Assets\ARPG Effects\Readme.txt" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\texture-709723.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\wood-731407.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\brick-957823.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\stone-805287.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\wall-846015.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\brick-957827.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\shading-671263.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\wall-617961.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\wood-877365.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\wall-846013.shader" />
-     <None Include="Assets\Wall&amp;Floor_Text\Shaders\brick-807728.shader" />
+     <None Include="Assets\Efectos_Prueba\Readme.txt" />
     <Reference Include="UnityEngine">
         <HintPath>F:\UnityProyectos\2020.3.13f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
