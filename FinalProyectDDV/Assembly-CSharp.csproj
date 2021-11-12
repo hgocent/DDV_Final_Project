@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXRotation.cs" />
      <Compile Include="Assets\Soldier_Guns\Scripts\GunsMenu.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -55,6 +56,7 @@
      <Compile Include="Assets\Soldier_Guns\Scripts\GunView.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonOrbitCamBasic.cs" />
      <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
+     <Compile Include="Assets\LaserScript.cs" />
      <None Include="Assets\Efectos_Prueba\Readme.txt" />
     <Reference Include="UnityEngine">
         <HintPath>F:\UnityProyectos\2020.3.13f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

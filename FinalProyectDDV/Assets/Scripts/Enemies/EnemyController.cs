@@ -58,9 +58,16 @@ public class EnemyController : MonoBehaviour
          }
     }
 
-    /*private void OnDrawGizmos() 
+   private void OnTriggerEnter(Collider other) {
+       if (other.tag == "Laser")
+       {
+           Destroy(gameObject);
+       }
+   }
+
+    private void OnDrawGizmos() 
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward) * distanceRay);
-    }*/
+    }
 }
