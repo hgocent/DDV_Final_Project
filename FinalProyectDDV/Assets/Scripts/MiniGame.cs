@@ -56,6 +56,7 @@ public class MiniGame : MonoBehaviour
         {   
             GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("YOU WON! PORTAL IS OPEN");
             
+            GameObject.Find("PortalGreenIdle").transform.position = new Vector3(11, 6, 24);
             GameManager.setPortalState(true);
             timerCountDown = 1.5f;
 
@@ -81,7 +82,7 @@ public class MiniGame : MonoBehaviour
 
     void ChangeColor(int c)
     {  
-        rndSwitch = Random.Range(2, 5); //get random number 2, 3 or 4
+        rndSwitch = Random.Range(2, 4); //Random.Range(2, 5) to get random number 2, 3 or 4
         colCheck *= (int)rndSwitch;
 
         
@@ -107,21 +108,11 @@ public class MiniGame : MonoBehaviour
     {   
         button = true;
 
-        //Debug.Log("I'M IN");
-        //if (other.gameObject.tag == "Player")
-        //{
-        //    GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("Get the same color in all circles");
-        //}
     }
     
     private void OnTriggerExit(Collider other)
     {
         button = false;
-        //if (other.gameObject.tag == "Player")
-        //{
-        //    GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("");
-
-        //}
     }
 
 

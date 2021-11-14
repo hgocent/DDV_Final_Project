@@ -20,15 +20,15 @@ public class TextMessageExtraLvl : MonoBehaviour
     {   
 
         //Debug.Log("I'M IN");
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "PlayerL1a")
         {
-            GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("Get the same color in all circles");
+            GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("Match a color in all circles");
         }
     }
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "PlayerL1a")
         {
             GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("");
 
