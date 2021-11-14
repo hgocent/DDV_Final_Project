@@ -1,31 +1,33 @@
-using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MiniGame : MonoBehaviour
 {
-    private bool button = false;
-    //private float timerCountDown = 3.0f;
-    private float rndSwitch; 
-    private bool c1 = false; 
+    private bool button = false; //to activate colouring
+    private float timerCountDown = 1.5f; //timer reset if 3 colors don't match
+    private float rndSwitch; //to select random color between 3 possible colors
+    private bool c1 = false; //to check cylinder is coloured or not
     private bool c2 = false;
     private bool c3 = false;
+    private int colCheck = 1; //to check color codes, must be initiated in 1 because 1 is neutral for multiplication, otherwise will be taken as 0 and will not check at all.
 
     // Start is called before the first frame update
     void Start()
     {
+        //PortalGreenIdle not visible // 
+        //GameObject.Find("PortalGreenIdle").SetActive(false);
         
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //Debug.Log(timerCountDown);
         if (button == true)
-        {
-            button = false;
+        {   
+            //Debug.Log(colCheck);
             
-            //Invoke("ChangeColor(1)",0.5f);
             if (c1 == false)
             {
                 c1 = true;
@@ -41,76 +43,59 @@ public class MiniGame : MonoBehaviour
                 c3 = true;
                 ChangeColor(3);
             }
-            else
-            {
-                
-                GameObject.Find("Cylinder (1)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-                GameObject.Find("Cylinder (2)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-                GameObject.Find("Cylinder (3)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
 
-                c1 = false;
-                c2 = false;
-                c3 = false;
-            } 
-            
-            if (GameObject.Find("Cylinder (1)").GetComponent<Renderer>().material.GetColor("_Color") == Color.green)
-            {
-                Debug.Log("cylinder 1 is green");
-            } 
-
-
-            /*timerCountDown -= Time.deltaTime;
-
-            //button = false;
-
-            if (timerCountDown <= 0)
-            {
-                GameObject.Find("Cylinder (1)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-                GameObject.Find("Cylinder (2)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-                GameObject.Find("Cylinder (3)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-
-                c1 = false;
-                c2 = false;
-                c3 = false;
-
-                timerCountDown = 3.0f;
-
-            }
-            */
-
-            /*if (timerCountDown <= 0)
-            {
-                //
-                //Debug.Log("Hit wall for 2 seconds");
-                
-                newPosition=new Vector3(Random.Range(1,6),2,Random.Range(-3,3));
-                wall.position = newPosition;
-                wall.Rotate(0,Random.Range(0,360),0);
-                
-                timerCountDown = 2.0f;
-                isPlayerColliding = false;
-            }*/
+            button = false;
         }
+
+        if(c3 == true)
+        {
+            timerCountDown -= Time.deltaTime;
+        }
+
+        if ((colCheck == 8 || colCheck == 27 || colCheck == 64) && c3 == true) 
+        {   
+            GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("YOU WON! PORTAL IS OPEN");
+            
+            GameManager.setPortalState(true);
+            timerCountDown = 1.5f;
+
+        }
+        
+        if ((colCheck != 8 || colCheck != 27 || colCheck != 64) && (timerCountDown <= 0))
+        {
+            c1 = false;
+            c2 = false;
+            c3 = false;
+
+            colCheck = 1;
+            timerCountDown = 1.5f;
+
+            GameObject.Find("Cylinder (1)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+            GameObject.Find("Cylinder (2)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+            GameObject.Find("Cylinder (3)").GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+        } 
+
+        //
 
     }
 
     void ChangeColor(int c)
     {  
-        rndSwitch = Random.Range(1, 4); 
-        //Debug.Log("RANDOM IN SWITCH: "+ rndSwitch);
+        rndSwitch = Random.Range(2, 5); //get random number 2, 3 or 4
+        colCheck *= (int)rndSwitch;
+
         
         switch(rndSwitch)
         {
-            case 1:
-            //Debug.Log("HOLA");
+            case 2:
             GameObject.Find("Cylinder ("+ c +")").GetComponent<Renderer>().material.SetColor("_Color", Color.green);
             break;
             
-            case 2:
+            case 3:
             GameObject.Find("Cylinder ("+ c +")").GetComponent<Renderer>().material.SetColor("_Color", Color.yellow);
             break;
             
-            case 3:
+            case 4:
             GameObject.Find("Cylinder ("+ c +")").GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
             break;
             
