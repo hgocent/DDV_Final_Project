@@ -61,8 +61,10 @@
      <Compile Include="Assets\Soldier_Guns\Scripts\GunView.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonOrbitCamBasic.cs" />
      <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
-     <Compile Include="Assets\UI\Script\UIcontroller.cs" />
+     <Compile Include="Assets\UI\Script\MainMenuController.cs" />
+     <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
      <None Include="Assets\Efectos_Prueba\Readme.txt" />
+     <None Include="Assets\UI pack\Documentation.txt" />
     <Reference Include="UnityEngine">
         <HintPath>F:\UnityProyectos\2020.3.13f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
