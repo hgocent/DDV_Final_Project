@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\SceneController.cs" />
      <Compile Include="Assets\Efectos_Prueba\Demo\Scripts\ARPGFXLoopScript.cs" />
      <Compile Include="Assets\Scripts\Enemies\BulletControl.cs" />
+     <Compile Include="Assets\Sci-Fi UI\Demo_Assets\scripts\GUI_Demo.cs" />
      <Compile Include="Assets\Scripts\TextMessageExtraLvl.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBasics\MoveBehaviour.cs" />
      <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXLightFade.cs" />
@@ -60,7 +61,7 @@
      <Compile Include="Assets\Soldier_Guns\Scripts\GunView.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonOrbitCamBasic.cs" />
      <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
-     <Compile Include="Assets\Sci-Fi UI\Demo_Assets\scripts\GUI_Demo.cs" />
+     <Compile Include="Assets\UI\Script\UIcontroller.cs" />
      <None Include="Assets\Efectos_Prueba\Readme.txt" />
     <Reference Include="UnityEngine">
         <HintPath>F:\UnityProyectos\2020.3.13f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
