@@ -36,7 +36,7 @@ public class TakeDamage : MonoBehaviour
     {
         if ( shield.activeSelf == true)
         {
-            currentHealth -= damage/4;
+            currentHealth -= damage/2;
             healthbar.SetHealth(currentHealth);
             currentShield -= damage;
             shieldbar.SetShield(currentShield);
@@ -77,7 +77,7 @@ public class TakeDamage : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-            Damage(0.05f);
+            Damage(0.25f);
         }
         
     }
