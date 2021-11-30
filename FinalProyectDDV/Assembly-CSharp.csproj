@@ -48,7 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
-     <Compile Include="Assets\Scripts\LaserScript.cs" />
+     <Compile Include="Assets\Scripts\Player\LaserScript.cs" />
      <Compile Include="Assets\Scripts\Player\TakeDamage.cs" />
      <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXRotation.cs" />
      <Compile Include="Assets\Soldier_Guns\Scripts\GunsMenu.cs" />
@@ -57,14 +57,17 @@
      <Compile Include="Assets\Scripts\Player\PlayerBasics\BasicBehaviour.cs" />
      <Compile Include="Assets\Scripts\SceneController.cs" />
      <Compile Include="Assets\UI\UI pack\Scripts\FillValueNumber.cs" />
+     <Compile Include="Assets\Scripts\Enemies\SoldierMachineGun.cs" />
      <Compile Include="Assets\Efectos_Prueba\Demo\Scripts\ARPGFXLoopScript.cs" />
      <Compile Include="Assets\Scripts\Enemies\BulletControl.cs" />
      <Compile Include="Assets\Sci-Fi UI\Demo_Assets\scripts\GUI_Demo.cs" />
+     <Compile Include="Assets\Scripts\Enemies\Soldiers.cs" />
      <Compile Include="Assets\UI\Script\MainMenuController.cs" />
      <Compile Include="Assets\Scripts\TextMessageExtraLvl.cs" />
      <Compile Include="Assets\Scripts\HUD\ShieldBarController.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBasics\MoveBehaviour.cs" />
      <Compile Include="Assets\Scripts\HUD\EnergyBarController.cs" />
+     <Compile Include="Assets\Scripts\SoldierData.cs" />
      <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXLightFade.cs" />
      <Compile Include="Assets\Scripts\HUD\HealthbarController.cs" />
      <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXLightFlicker.cs" />

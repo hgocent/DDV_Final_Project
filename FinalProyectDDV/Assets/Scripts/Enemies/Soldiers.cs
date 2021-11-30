@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Soldiers : MonoBehaviour
 {
-    [SerializeField] private float distanceRay = 15f;
+    [SerializeField] protected float distanceRay = 15f;
     [SerializeField] private GameObject shootOrigin;
-    [SerializeField] private float shootCooldown = 0.5f;
-    [SerializeField] private float timeShoot = 1f;
+    [SerializeField] protected float shootCooldown = 0.5f;
+    [SerializeField] protected float timeShoot = 1f;
     [SerializeField] private GameObject bulletPrefab;
            
-    private bool canShoot = true;
+    protected bool canShoot = true;
     
     // Start is called before the first frame update
     void Start()
@@ -34,15 +34,10 @@ public class EnemyController : MonoBehaviour
         {
             canShoot = true;    
         }
-        
 
-
-
-       
-        
     }
 
-    private void RaycastWeapon()
+    public void RaycastWeapon()
     {
         RaycastHit hit;
         
@@ -53,19 +48,18 @@ public class EnemyController : MonoBehaviour
             timeShoot = 0;            
             GameObject b = Instantiate(bulletPrefab, shootOrigin.transform.position, bulletPrefab.transform.rotation);
             b.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.TransformDirection(Vector3.forward) * distanceRay, ForceMode.Impulse);
-            
-            
+                      
          }
     }
 
-   private void OnTriggerEnter(Collider other) {
+   public void OnTriggerEnter(Collider other) {
        if (other.tag == "Laser")
        {
            Destroy(gameObject);
        }
    }
 
-    private void OnDrawGizmos() 
+    public void OnDrawGizmos() 
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward) * distanceRay);
