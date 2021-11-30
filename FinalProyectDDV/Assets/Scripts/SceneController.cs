@@ -35,11 +35,11 @@ public class SceneController : MonoBehaviour
         //Debug.Log(other.tag);
         if (other.tag=="PlayerL1")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Extralvl_1");
         }
         else if (other.tag=="PlayerL1a")
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Nivel_1");
         }
 
         
