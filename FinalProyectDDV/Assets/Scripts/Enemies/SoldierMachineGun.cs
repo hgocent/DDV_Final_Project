@@ -19,10 +19,10 @@ public class SoldierMachineGun : Soldiers
             
         }
         else{
-            timeShoot += Time.deltaTime;
+            myData.IncreaseTimeShoot(Time.deltaTime);
                         
         }
-        if (timeShoot > shootCooldown )
+        if (myData.TimeShoot > myData.ShootCoolDown )
         {
             canShoot = true;    
         }

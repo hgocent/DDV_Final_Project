@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float shootCooldown = 0.5f;
     [SerializeField] private float timeShoot = 1f;
     [SerializeField] private GameObject bulletPrefab;
-           
+
     private bool canShoot = true;
     
     // Start is called before the first frame update

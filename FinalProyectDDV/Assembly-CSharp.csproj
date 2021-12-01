@@ -51,7 +51,6 @@
      <Compile Include="Assets\Scripts\Player\LaserScript.cs" />
      <Compile Include="Assets\Scripts\Player\TakeDamage.cs" />
      <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXRotation.cs" />
-     <Compile Include="Assets\Scripts\ScriptableObjects\Enemies_Data.cs" />
      <Compile Include="Assets\Soldier_Guns\Scripts\GunsMenu.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
@@ -307,9 +306,6 @@
  </Reference>
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>/Applications/Unity/Hub/Editor/2020.3.13f1/PlaybackEngines/AppleTVSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Hub/Editor/2020.3.13f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Soldiers : MonoBehaviour
-{
-    [SerializeField] protected float distanceRay = 15f;
+{  
     [SerializeField] private GameObject shootOrigin;
-    [SerializeField] protected float shootCooldown = 0.5f;
-    [SerializeField] protected float timeShoot = 1f;
     [SerializeField] private GameObject bulletPrefab;
-           
+    [SerializeField] protected SoldierData myData;
+    
     protected bool canShoot = true;
     
     // Start is called before the first frame update
@@ -26,11 +24,12 @@ public class Soldiers : MonoBehaviour
             RaycastWeapon();
             
         }
-        else{
-            timeShoot += Time.deltaTime;
+        else
+        {
+            myData.IncreaseTimeShoot(Time.deltaTime);
                         
         }
-        if (timeShoot > shootCooldown )
+        if (myData.TimeShoot > myData.ShootCoolDown )
         {
             canShoot = true;    
         }
@@ -41,13 +40,13 @@ public class Soldiers : MonoBehaviour
     {
         RaycastHit hit;
         
-        if(Physics.Raycast(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward), out hit, distanceRay) && hit.collider.tag.Equals("PlayerL1"))
+        if(Physics.Raycast(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward), out hit, myData.DistanceRay) && hit.collider.tag.Equals("PlayerL1"))
         {
             
             canShoot = false;
-            timeShoot = 0;            
+            myData.NullTimeShoot();           
             GameObject b = Instantiate(bulletPrefab, shootOrigin.transform.position, bulletPrefab.transform.rotation);
-            b.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.TransformDirection(Vector3.forward) * distanceRay, ForceMode.Impulse);
+            b.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.TransformDirection(Vector3.forward) * myData.DistanceRay, ForceMode.Impulse);
                       
          }
     }
@@ -62,6 +61,6 @@ public class Soldiers : MonoBehaviour
     public void OnDrawGizmos() 
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward) * distanceRay);
+        Gizmos.DrawRay(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward) * myData.DistanceRay);
     }
 }
