@@ -1,3 +1,5 @@
+//using System.Net.WebSockets;
+//using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +39,8 @@ public class Soldiers : MonoBehaviour
     }
 
     public void RaycastWeapon()
-    {
+    {   
+        
         RaycastHit hit;
         
         if(Physics.Raycast(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward), out hit, myData.DistanceRay) && hit.collider.tag.Equals("PlayerL1"))
@@ -48,7 +51,8 @@ public class Soldiers : MonoBehaviour
             GameObject b = Instantiate(bulletPrefab, shootOrigin.transform.position, bulletPrefab.transform.rotation);
             b.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.TransformDirection(Vector3.forward) * myData.DistanceRay, ForceMode.Impulse);
                       
-         }
+        }
+        
     }
 
    public void OnTriggerEnter(Collider other) {
