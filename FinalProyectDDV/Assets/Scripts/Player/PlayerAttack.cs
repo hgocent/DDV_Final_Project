@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject laserOrigin; 
-    [SerializeField] private GameObject laserBullet; //This is bulletPrefab in the example
+    [SerializeField] private GameObject laserBullet; 
     [SerializeField] private float laserCooldown = 0.5f;
     [SerializeField] private float laserShoot = 1f;
     [SerializeField] private float distanceLaser = 20f;
