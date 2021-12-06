@@ -16,11 +16,10 @@ public class MiniGame : MonoBehaviour
 
     // Start is called before the first frame update
 
-    private CuboController cuboScript;
+    //private CuboController cuboScript;
     void Start()
     {
-        //PortalGreenIdle not visible // 
-        //GameObject.Find("PortalGreenIdle").SetActive(false);
+        //
         
     }
 
@@ -64,6 +63,7 @@ public class MiniGame : MonoBehaviour
             GameManager.setPortalState(true);
             timerCountDown = 1.5f;
             
+            extraLvlEvents.mgWonEvent();
 
         }
         
@@ -119,18 +119,12 @@ public class MiniGame : MonoBehaviour
     {
         button = false;
     }
-    public void ActiveShield()
-    {
-      Debug.Log("ACTIVADO");
-      //gameObject.SetActive(true);
-    }
-
-
-
 
 
 }
+
 public static class extraLvlEvents
 {
-    public static Action ShieldEvent;
+    public static Action mgWonEvent;
 }
+

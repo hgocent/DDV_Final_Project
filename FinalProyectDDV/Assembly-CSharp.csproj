@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\LaserScript.cs" />
      <Compile Include="Assets\Scripts\Player\TakeDamage.cs" />
+     <Compile Include="Assets\Scripts\Player\player_events.cs" />
      <Compile Include="Assets\Efectos_Prueba\Scripts\ARPGFXRotation.cs" />
      <Compile Include="Assets\Soldier_Guns\Scripts\GunsMenu.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
