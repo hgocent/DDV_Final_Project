@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class ShieldController : MonoBehaviour
 {   
    [SerializeField] private GameObject shield;
+    [SerializeField] private GameObject sBar;
+    
 
     private void Start() 
     {
@@ -15,16 +18,18 @@ public class ShieldController : MonoBehaviour
     
     // Start is called before the first frame update
     
-    /*private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other) 
     {
+        
      //Debug.Log(other.tag.Substring(0, 6));
       if (other.tag.Substring(0, 6) == "Player")
       {
-          shield.SetActive(true);
-                   
+          //shield.SetActive(false);
+          sBar.SetActive(true);
+          extraLvlEvents.mgWonEvent -= ActivateShield;          
           Destroy(gameObject);
       }  
-    }*/ 
+    } 
 
     private void ActivateShield()
     {

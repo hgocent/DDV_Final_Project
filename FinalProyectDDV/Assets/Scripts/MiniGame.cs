@@ -63,7 +63,11 @@ public class MiniGame : MonoBehaviour
             GameManager.setPortalState(true);
             timerCountDown = 1.5f;
             
-            extraLvlEvents.mgWonEvent();
+            if (extraLvlEvents.mgWonEvent != null)
+            {
+              extraLvlEvents.mgWonEvent();  
+            }
+            
 
         }
         
