@@ -74,4 +74,14 @@ public class SoldierData : ScriptableObject
         timeShoot = 0;
 
     }
+
+    public void DecreaseHp(float Amount)
+    {
+        hp = hp - Amount;
+    }
+
+    public void SetHp(float Amount)
+    {
+        hp = Amount;
+    }
 }

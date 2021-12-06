@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class GameManager : MonoBehaviour
     public static int playerLife;
     public static int playerScore;
 
-    public static bool isPortalOpen; // this is the green portal on extra level
+    public static bool isPortalOpen;
+    public static int EnemyDeathCount = 0;
+    private Soldiers soldierScript;
+    
+    [SerializeField] private TakeDamage playerScript;
 
     //Make singleton
     private void Awake()
@@ -31,7 +36,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //soldierScript = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Soldiers>();
+        soldierScript = FindObjectOfType<Soldiers>();
+        soldierScript.OnEnemyDeath += CountEnemyDeath;
+    }
+
+    private void CountEnemyDeath()
+    {
+        EnemyDeathCount++;
+        Debug.Log("Enemigos muertos: " + EnemyDeathCount); // Luego mostaremos la cantidad de enemigos eliminados en HUD;
     }
 
     // Update is called once per frame

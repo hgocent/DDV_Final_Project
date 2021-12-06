@@ -1,6 +1,8 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System;
+
 
 public class MiniGame : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class MiniGame : MonoBehaviour
     private int colCheck = 1; //to check color codes, must be initiated in 1 because 1 is neutral for multiplication, otherwise will be taken as 0 and will not check at all.
 
     // Start is called before the first frame update
+
+    private CuboController cuboScript;
     void Start()
     {
         //PortalGreenIdle not visible // 
@@ -59,6 +63,7 @@ public class MiniGame : MonoBehaviour
             GameObject.Find("PortalGreenIdle").transform.position = new Vector3(11, 6, 24);
             GameManager.setPortalState(true);
             timerCountDown = 1.5f;
+            
 
         }
         
@@ -82,7 +87,7 @@ public class MiniGame : MonoBehaviour
 
     void ChangeColor(int c)
     {  
-        rndSwitch = Random.Range(2, 4); //Random.Range(2, 5) to get random number 2, 3 or 4
+        rndSwitch = UnityEngine.Random.Range(2, 4); //Random.Range(2, 5) to get random number 2, 3 or 4
         colCheck *= (int)rndSwitch;
 
         
@@ -114,6 +119,18 @@ public class MiniGame : MonoBehaviour
     {
         button = false;
     }
+    public void ActiveShield()
+    {
+      Debug.Log("ACTIVADO");
+      //gameObject.SetActive(true);
+    }
 
 
+
+
+
+}
+public static class extraLvlEvents
+{
+    public static Action ShieldEvent;
 }

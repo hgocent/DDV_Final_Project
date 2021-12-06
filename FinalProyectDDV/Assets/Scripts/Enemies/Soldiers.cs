@@ -3,12 +3,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Soldiers : MonoBehaviour
 {  
     [SerializeField] private GameObject shootOrigin;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] protected SoldierData myData;
+    public event Action OnEnemyDeath;
     
     protected bool canShoot = true;
     
@@ -58,7 +60,16 @@ public class Soldiers : MonoBehaviour
    public void OnTriggerEnter(Collider other) {
        if (other.tag == "Laser")
        {
-           Destroy(gameObject);
+           myData.DecreaseHp(1f);
+           if (myData.Hp <= 0)
+           {
+                Debug.Log(myData.Hp);
+                OnEnemyDeath();
+                myData.SetHp(5);
+                Destroy(gameObject);
+           }
+           
+           
        }
    }
 
