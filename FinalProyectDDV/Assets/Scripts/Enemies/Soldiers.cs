@@ -1,5 +1,3 @@
-//using System.Net.WebSockets;
-//using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +8,14 @@ public class Soldiers : MonoBehaviour
     [SerializeField] private GameObject shootOrigin;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] protected SoldierData myData;
-    public event Action OnEnemyDeath;
+    private float enemyHp;
     
     protected bool canShoot = true;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyHp = myData.Hp;
     }
 
     // Update is called once per frame
@@ -60,12 +58,13 @@ public class Soldiers : MonoBehaviour
    public void OnTriggerEnter(Collider other) {
        if (other.tag == "Laser")
        {
-           myData.DecreaseHp(1f);
-           if (myData.Hp <= 0)
+           
+           enemyHp -= 1f;
+           
+           if (enemyHp <= 0)
            {
-                Debug.Log(myData.Hp);
-                OnEnemyDeath();
-                myData.SetHp(5);
+                //Debug.Log(enemyHp);
+                soldier_events.OnEnemyDeath();
                 Destroy(gameObject);
            }
            
@@ -79,3 +78,9 @@ public class Soldiers : MonoBehaviour
         Gizmos.DrawRay(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward) * myData.DistanceRay);
     }
 }
+
+public static class soldier_events
+{
+    public static Action OnEnemyDeath;
+}
+

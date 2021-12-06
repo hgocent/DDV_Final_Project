@@ -7,14 +7,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public static int playerLife;
+    public static int playerLives;
+    public static int playerBar;
     public static int playerScore;
-
+    
     public static bool isPortalOpen;
     public static int EnemyDeathCount = 0;
-    private Soldiers soldierScript;
     
-    [SerializeField] private TakeDamage playerScript;
+    //public HealthbarController healthbar;
+
+    //[SerializeField] private int playerLives;
+    [SerializeField] private GameObject gameoverPanel;
+    //[SerializeField] private TakeDamage playerScript;
 
     //Make singleton
     private void Awake()
@@ -22,7 +26,8 @@ public class GameManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            playerLife = 100;
+            playerLives = 3;
+            playerBar = 100;
             playerScore = 0;
             isPortalOpen = false;
             DontDestroyOnLoad(gameObject);
@@ -36,9 +41,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //soldierScript = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Soldiers>();
-        soldierScript = FindObjectOfType<Soldiers>();
-        soldierScript.OnEnemyDeath += CountEnemyDeath;
+        Debug.Log(playerLives);
+
+        soldier_events.OnEnemyDeath += CountEnemyDeath;
+        player_events.OnPlayerDeath += ManageLives;
     }
 
     private void CountEnemyDeath()
@@ -47,6 +53,24 @@ public class GameManager : MonoBehaviour
         Debug.Log("Enemigos muertos: " + EnemyDeathCount); // Luego mostaremos la cantidad de enemigos eliminados en HUD;
     }
 
+    private void ManageLives()
+    {   
+        
+        playerLives --;
+        Debug.Log("You lost 1 life");
+        Debug.Log(playerLives);
+        
+        if (playerLives == 0)
+        {
+            gameoverPanel.SetActive(true);
+            
+            //QUE SE DETENGA EL JUEGO
+            Time.timeScale = 0;
+        }
+        
+    }
+
+    
     // Update is called once per frame
     void Update()
     {
@@ -55,12 +79,17 @@ public class GameManager : MonoBehaviour
 
     public static int getLife()
     {
-        return playerLife;
+        return playerBar;
     }
 
     public static int getScore()
     {
         return playerScore;
+    }
+
+    public static int getLives()
+    {
+        return playerLives;
     }
 
     public static bool getPortalState()
@@ -70,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public static void decreaseLife(int damage)
     {
-        playerLife -= damage;
+        playerBar -= damage;
     }
 
     public static void increaseScore(int score)

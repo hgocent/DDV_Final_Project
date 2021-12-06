@@ -9,7 +9,7 @@ public class TakeDamage : MonoBehaviour
     private float maxShield = 1f;
     private float currentShield;
     [SerializeField] private GameObject shield;
-    [SerializeField] private GameObject gameoverPanel;
+    //[SerializeField] private GameObject gameoverPanel;
     
 
     public HealthbarController healthbar;
@@ -17,15 +17,43 @@ public class TakeDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
-        healthbar.SetMaxHealth(maxHealth);
-        currentShield = maxShield;
-        shieldbar.SetMaxShield(maxShield);
+        ResetLifeBar();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //verificar si tengo lifebar
+        //poner <= en current health si queremos que la verificacion sea instantanea al momento d perder la vida sino dejar en < para que la ultima bala indique la perdida completa d vida y dispare OnPlayerDeath;
+
+        //if (shield.activeSelf == true)
+        {   if ((shield.activeSelf == true && currentHealth <= 0 && currentShield <= 0 ) || (shield.activeSelf == false && currentHealth <= 0))
+            {
+                //gameoverPanel.SetActive(true);
+                //QUE SE DETENGA EL JUEGO
+                //Time.timeScale = 0;
+
+                player_events.OnPlayerDeath();
+                
+                if (GameManager.playerLives > 0)
+                {
+                    ResetLifeBar();
+                }
+                
+                
+                
+            }
+        }
+        /*else
+        {
+            if(currentHealth < 0 )
+            {
+                //gameoverPanel.SetActive(true);
+                // QUE SE DETENGA EL JUEGO
+                //Time.timeScale = 0;
+                player_events.OnPlayerDeath();             
+            }
+        }*/
         
         
         
@@ -53,23 +81,8 @@ public class TakeDamage : MonoBehaviour
         }
 
 
-        if (shield.activeSelf == true)
-        {   if (currentHealth < 0 && currentShield < 0 )
-            {
-                gameoverPanel.SetActive(true);
-                //QUE SE DETENGA EL JUEGO
-                Time.timeScale = 0;
-            }
-        }
-        else
-        {
-            if(currentHealth < 0 )
-            {
-                gameoverPanel.SetActive(true);
-                // QUE SE DETENGA EL JUEGO
-                Time.timeScale = 0;             
-            }
-        }
+        //ex verificacion de vida
+
         
     }
 
@@ -80,5 +93,13 @@ public class TakeDamage : MonoBehaviour
             Damage(0.25f);
         }
         
+    }
+
+    private void ResetLifeBar()
+    {
+        currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
+        currentShield = maxShield;
+        shieldbar.SetMaxShield(maxShield);
     }
 }
