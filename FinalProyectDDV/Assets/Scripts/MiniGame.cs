@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Events;
 
 
 public class MiniGame : MonoBehaviour
@@ -13,6 +14,7 @@ public class MiniGame : MonoBehaviour
     private bool c2 = false;
     private bool c3 = false;
     private int colCheck = 1; //to check color codes, must be initiated in 1 because 1 is neutral for multiplication, otherwise will be taken as 0 and will not check at all.
+    [SerializeField] private UnityEvent OnSwitchLight;
 
     // Start is called before the first frame update
 
@@ -116,7 +118,7 @@ public class MiniGame : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {   
         button = true;
-
+        OnSwitchLight?.Invoke();
     }
     
     private void OnTriggerExit(Collider other)

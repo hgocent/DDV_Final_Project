@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
             
             if (SceneManager.GetActiveScene().name == "Nivel_1")//if (gameObject.tag == "PlayerL1")
             {
-                GameObject.Find("Player").transform.position = new Vector3(-31.97f, 0.66f, -2.19f);
+                GameObject.Find("Player").transform.position = new Vector3(-31f, 3f, -4);
                 
                 GameManager.setPortalState(false);
                 //Debug.Log("Player de nivel 1");
