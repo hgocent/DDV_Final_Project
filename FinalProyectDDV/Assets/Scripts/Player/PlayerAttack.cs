@@ -1,3 +1,4 @@
+using System.Net;
 using System.Runtime.ExceptionServices;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
@@ -13,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float laserShoot = 1f;
     [SerializeField] private float distanceLaser = 20f;
     [SerializeField] private EnergyBarController energyBar;
+    [SerializeField] private float speedBullet = 1f;
     
     private float maxEnergy = 21f;
     private float currentEnergy;
@@ -74,7 +76,7 @@ public class PlayerAttack : MonoBehaviour
 
            //a.GetComponent<Rigidbody>().AddForce(laserOrigin.transform.TransformDirection(Vector3.forward) * distanceLaser, ForceMode.Impulse);
 
-            a.GetComponent<Rigidbody>().AddForce(direction.normalized * distanceLaser, ForceMode.Impulse); //new
+            a.GetComponent<Rigidbody>().AddForce((direction.normalized * distanceLaser)*speedBullet, ForceMode.Impulse); //new
             
             DecreaseEnergy(energyShoot);
             

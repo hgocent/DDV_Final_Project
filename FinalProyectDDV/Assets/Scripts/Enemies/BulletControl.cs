@@ -5,6 +5,10 @@ using UnityEngine;
 public class BulletControl : MonoBehaviour
 {
     private float bulletTime = 3f;
+    
+    
+    
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -21,4 +25,14 @@ public class BulletControl : MonoBehaviour
            bulletTime = 3f;
        }
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "PlayerL1")
+        {
+            Destroy(gameObject);
+        }
+    }
+        
+    
 }

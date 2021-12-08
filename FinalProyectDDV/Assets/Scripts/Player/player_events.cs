@@ -6,4 +6,8 @@ using System;
 public static class player_events
 {
    public static Action OnPlayerDeath;
+
+   public static Action OnPlayerCliff;
 }
+
+

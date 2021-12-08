@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
-{
+{   
+    [SerializeField] private PostProcessingController postPContScr;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +29,18 @@ public class MainMenuController : MonoBehaviour
     public void OnClickPlay()
     {
         SceneManager.LoadScene("Nivel_1");
+    }
+
+    public void OnClickSettings()
+    {
+        //postPContScr._bloomOnOff(true);
+        //Debug.Log(GameManager.setPprocessingCheckmark());
+        SceneManager.LoadScene("Settings");
+    }
+
+    public void OnClickBack()
+    {
+        //Debug.Log("CARGAR");
+        SceneManager.LoadScene("MainMenu");
     }
 }

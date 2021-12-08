@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static bool isPortalOpen;
     public static int EnemyDeathCount = 0;
     
+    public static bool pProcessingCheckmark;
+
     //public HealthbarController healthbar;
 
     //[SerializeField] private int playerLives;
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
 
         soldier_events.OnEnemyDeath += CountEnemyDeath;
         player_events.OnPlayerDeath += ManageLives;
+        player_events.OnPlayerCliff += OnCliff;
     }
 
     private void CountEnemyDeath()
@@ -70,11 +73,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    
-    // Update is called once per frame
-    void Update()
+    private void OnCliff()
     {
+        playerLives = 1;
+        ManageLives();
         
+        
+    }
+
+    public static bool getPprocessingCheckmark()
+    {
+        return pProcessingCheckmark;
     }
 
     public static int getLife()
@@ -97,6 +106,10 @@ public class GameManager : MonoBehaviour
         return isPortalOpen;
     }
 
+    public static bool setPprocessingCheckmark()
+    {
+        return (pProcessingCheckmark = !pProcessingCheckmark);
+    }
     public static void decreaseLife(int damage)
     {
         playerBar -= damage;
