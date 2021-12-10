@@ -8,6 +8,7 @@ public class Soldiers : MonoBehaviour
     [SerializeField] private GameObject shootOrigin;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] protected SoldierData myData;
+    
     private float enemyHp;
     
     protected bool canShoot = true;
@@ -16,6 +17,7 @@ public class Soldiers : MonoBehaviour
     void Start()
     {
         enemyHp = myData.Hp;
+        
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class Soldiers : MonoBehaviour
         if (canShoot)
         {
             RaycastWeapon();
+            
             
         }
         else
@@ -77,6 +80,9 @@ public class Soldiers : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward) * myData.DistanceRay);
     }
+
+    
+    
 }
 
 public static class soldier_events
