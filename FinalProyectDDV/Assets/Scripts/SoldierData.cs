@@ -11,6 +11,7 @@ public class SoldierData : ScriptableObject
     [SerializeField] private float hp;
     [SerializeField] private float shield;
     [SerializeField] private float damage;
+    
 
     public float DistanceRay
     {

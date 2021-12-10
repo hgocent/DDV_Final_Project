@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
      <None Include="Assets\Efectos_Prueba\Readme.txt" />
      <None Include="Assets\UI\UI pack\Documentation.txt" />
+     <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
     <Reference Include="UnityEngine">
         <HintPath>F:\UnityProyectos\2020.3.13f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
