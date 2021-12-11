@@ -21,11 +21,15 @@ public class SceneController : MonoBehaviour
             
             if (SceneManager.GetActiveScene().name == "Nivel_1")//if (gameObject.tag == "PlayerL1")
             {
-                GameObject.Find("Player").transform.position = new Vector3(-31f, 3f, -4);
+                GameObject.Find("Player").transform.position = new Vector3(-31f, 1f, -4);
                 
                 GameManager.setPortalState(false);
                 //Debug.Log("Player de nivel 1");
-            }
+
+            }/*else if (SceneManager.GetActiveScene().name == "Extralvl_1")
+            {
+                GameObject.Find("Player").transform.position = new Vector3(-40f, 1f, 18);
+            }*/
             //
         }
     }
@@ -33,15 +37,24 @@ public class SceneController : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         //Debug.Log(other.tag);
-        if (other.tag=="PlayerL1")
+        
+        /*if (other.tag=="PlayerL1")
         {
             SceneManager.LoadScene("Extralvl_1");
         }
         else if (other.tag=="PlayerL1a")
         {
             SceneManager.LoadScene("Nivel_1");
-        }
+        }*/
 
+        if (SceneManager.GetActiveScene().name == "Nivel_1")
+        {
+            SceneManager.LoadScene("Extralvl_1");
+
+        }else if (SceneManager.GetActiveScene().name == "Extralvl_1")
+        {
+            SceneManager.LoadScene("Nivel_1");
+        }
         
     }
 }

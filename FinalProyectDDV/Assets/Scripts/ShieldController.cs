@@ -6,12 +6,13 @@ using System;
 
 public class ShieldController : MonoBehaviour
 {   
-   [SerializeField] private GameObject shield;
-    [SerializeField] private GameObject sBar;
+    [SerializeField] private GameObject shield;
+    private GameObject sBar;
     
 
     private void Start() 
     {
+       sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar"); //New
        extraLvlEvents.mgWonEvent += ActivateShield;
 
     }

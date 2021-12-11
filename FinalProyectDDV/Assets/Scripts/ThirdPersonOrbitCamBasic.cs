@@ -54,6 +54,11 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 				"It is recommended to set all vertical offset in Pivot Offset.");
 	}
 
+	private void Start() 
+    {
+       player = GameObject.Find("Player").GetComponent<Transform>(); //New
+
+	}
 	void Update()
 	{
 		// Get mouse movement to orbit the camera.

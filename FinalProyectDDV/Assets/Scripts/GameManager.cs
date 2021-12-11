@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -16,15 +17,18 @@ public class GameManager : MonoBehaviour
     
     public static bool pProcessingCheckmark;
 
+    public static String thisLevel;
     //public HealthbarController healthbar;
 
     //[SerializeField] private int playerLives;
     [SerializeField] private GameObject gameoverPanel;
+    //Image gameoverImg;
+    //Text gameoverTxt;
     //[SerializeField] private TakeDamage playerScript;
 
     //Make singleton
     private void Awake()
-    {
+    {   
         if(instance == null)
         {
             instance = this;
@@ -33,16 +37,30 @@ public class GameManager : MonoBehaviour
             playerScore = 0;
             isPortalOpen = false;
             DontDestroyOnLoad(gameObject);
-        }
+            
+
+        }/*else if (instance != this) //Instance is not the same as the one we have, destroy old one, and reset to newest one
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }*/
         else
         {
             Destroy(gameObject);
-        }    
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        /*gameoverImg = gameoverPanel.GetComponent<Image>(); //New
+        gameoverImg.enabled = false; //New
+
+        gameoverTxt = gameoverPanel.transform.GetChild(0).GetComponent<Text>(); //New
+        gameoverTxt.enabled = false; //New
+        */
+        
         Debug.Log(playerLives);
 
         soldier_events.OnEnemyDeath += CountEnemyDeath;
@@ -63,10 +81,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("You lost 1 life");
         Debug.Log(playerLives);
         
-        if (playerLives == 0)
+        if (playerLives <= 0)
         {
-            gameoverPanel.SetActive(true);
-            
+            gameoverPanel.SetActive(true);  //Old
+            //gameoverImg.enabled = true; //New
+            //gameoverTxt.enabled = true; //New
+
             //QUE SE DETENGA EL JUEGO
             Time.timeScale = 0;
         }
