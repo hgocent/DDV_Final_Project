@@ -8,6 +8,8 @@ public class Soldiers : MonoBehaviour
     [SerializeField] private GameObject shootOrigin;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] protected SoldierData myData;
+    [SerializeField] private ParticleSystem muzzleShoot;
+    
     
     private float enemyHp;
     
@@ -26,12 +28,11 @@ public class Soldiers : MonoBehaviour
         if (canShoot)
         {
             RaycastWeapon();
-            
-            
+            muzzleShoot.Play();
         }
         else
         {
-            myData.IncreaseTimeShoot(Time.deltaTime);
+            myData.IncreaseTimeShoot(Time.deltaTime);            
                         
         }
         if (myData.TimeShoot > myData.ShootCoolDown )
@@ -49,7 +50,8 @@ public class Soldiers : MonoBehaviour
         if(Physics.Raycast(shootOrigin.transform.position, shootOrigin.transform.TransformDirection(Vector3.forward), out hit, myData.DistanceRay) && hit.collider.tag.Equals("PlayerL1"))
         {
             
-            canShoot = false;
+            canShoot = false;   
+            //muzzleShoot.Play();         
             myData.NullTimeShoot();           
             GameObject b = Instantiate(bulletPrefab, shootOrigin.transform.position, bulletPrefab.transform.rotation);
             b.GetComponent<Rigidbody>().AddForce(shootOrigin.transform.TransformDirection(Vector3.forward) * myData.DistanceRay, ForceMode.Impulse);

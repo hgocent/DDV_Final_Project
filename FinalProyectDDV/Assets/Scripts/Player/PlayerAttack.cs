@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float laserShoot = 1f;
     [SerializeField] private float distanceLaser = 20f;
     [SerializeField] private EnergyBarController energyBar;
-    [SerializeField] private float speedBullet = 1f;
+    [SerializeField] private float speedBullet = 0.5f;
     
     private float maxEnergy = 21f;
     private float currentEnergy;
