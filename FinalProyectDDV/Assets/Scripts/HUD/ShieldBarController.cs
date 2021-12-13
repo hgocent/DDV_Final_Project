@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 public class ShieldBarController : MonoBehaviour
 {
-    [SerializeField] private Image sBar;
+    private Image sBar; //ex[SerializeField] 
 
+    private void Start() 
+    {
+        sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar").GetComponent<Image>(); //New
+        //sBar.SetActive(false);
+    }
     public void SetShield(float shield)
     {
         sBar.fillAmount = shield;
@@ -15,9 +20,6 @@ public class ShieldBarController : MonoBehaviour
     {
         sBar.fillAmount = shield;
     }
-    
-
-
 
 
 }

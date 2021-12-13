@@ -57,7 +57,8 @@ public class MiniGame : MonoBehaviour
             timerCountDown -= Time.deltaTime;
         }
 
-        if ((colCheck == 8 || colCheck == 27 || colCheck == 64) && c3 == true) 
+        if (colCheck > 1)
+        //if ((colCheck == 8 || colCheck == 27 || colCheck == 64) && c3 == true) 
         {   
             GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("YOU WON! PORTAL IS OPEN");
             

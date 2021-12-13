@@ -8,7 +8,7 @@ public class Soldiers : MonoBehaviour
     [SerializeField] private GameObject shootOrigin;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] protected SoldierData myData;
-    [SerializeField] private ParticleSystem muzzleShoot;
+    //[SerializeField] private ParticleSystem muzzleShoot; //temporarily turned off
     
     
     private float enemyHp;
@@ -28,13 +28,14 @@ public class Soldiers : MonoBehaviour
         if (canShoot)
         {
             RaycastWeapon();
-            muzzleShoot.Play();
+            //muzzleShoot.Play(); //temp off
         }
         else
         {
             myData.IncreaseTimeShoot(Time.deltaTime);            
-                        
+            
         }
+
         if (myData.TimeShoot > myData.ShootCoolDown )
         {
             canShoot = true;    

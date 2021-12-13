@@ -8,15 +8,22 @@ public class TakeDamage : MonoBehaviour
     private float currentHealth;
     private float maxShield = 1f;
     private float currentShield;
-    [SerializeField] private GameObject shield;
+    private GameObject shield; //  [SerializeField] 
     //[SerializeField] private GameObject gameoverPanel;
     
 
-    public HealthbarController healthbar;
-    public ShieldBarController shieldbar;
+    private HealthbarController healthbar; //ex public
+    private ShieldBarController shieldbar; //ex public
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        shield = GameObject.Find("/HUD/Canvas/Panel/ShieldBar");
+
+        healthbar = GameObject.Find("/HUD/Canvas/Panel/HealthBar/HealthBar").GetComponent<HealthbarController>();
+        shieldbar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar/ShieldBar").GetComponent<ShieldBarController>();
+
+        shield.SetActive(false);
+        
         ResetLifeBar();
     }
 
