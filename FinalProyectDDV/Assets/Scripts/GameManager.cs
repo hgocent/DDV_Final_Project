@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static int playerScore;
     
     public static bool isPortalOpen;
+    public static bool isMiniGameWon;
     public static int EnemyDeathCount = 0;
     
     public static bool pProcessingCheckmark;

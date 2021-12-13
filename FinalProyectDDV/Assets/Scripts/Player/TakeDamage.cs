@@ -22,7 +22,10 @@ public class TakeDamage : MonoBehaviour
         healthbar = GameObject.Find("/HUD/Canvas/Panel/HealthBar/HealthBar").GetComponent<HealthbarController>();
         shieldbar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar/ShieldBar").GetComponent<ShieldBarController>();
 
-        shield.SetActive(false);
+        if (GameManager.isMiniGameWon == false)
+        {
+            shield.SetActive(false);
+        }
         
         ResetLifeBar();
     }

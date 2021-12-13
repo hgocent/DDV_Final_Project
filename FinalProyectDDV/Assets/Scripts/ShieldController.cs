@@ -9,23 +9,18 @@ public class ShieldController : MonoBehaviour
     [SerializeField] private GameObject shield; // 
     private GameObject sBar;
     
-    private String miniGameState = "notplayed";
     private void Awake() 
     {   
         
     }
     private void Start() 
     {
-        
-        //if(GameObject.Find("/HUD/Canvas/Panel/ShieldBar") != null)
-        {
-            sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar"); //New
+        Debug.Log(GameManager.isMiniGameWon);
 
-        }
-        
+        sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar"); //New
+
         extraLvlEvents.mgWonEvent += ActivateShield;
         
-        Debug.Log(shield + " - " + sBar);
     }
     
     // Start is called before the first frame update
@@ -34,7 +29,7 @@ public class ShieldController : MonoBehaviour
     {
         
      //Debug.Log(other.tag.Substring(0, 6));
-      if ((other.tag.Substring(0, 6) == "Player") && (miniGameState == "won"))
+      if ((other.tag.Substring(0, 6) == "Player") && (GameManager.isMiniGameWon == true))
       {
           //shield.SetActive(false);
           sBar.SetActive(true);
@@ -47,10 +42,10 @@ public class ShieldController : MonoBehaviour
 
     private void ActivateShield()
     {
-        //if (shield != null)
+        if (GameManager.isMiniGameWon == false)
         {
-            miniGameState = "won";
             shield.SetActive(true);
+            extraLvlEvents.mgWonEvent -= ActivateShield;
         }
     }
 }

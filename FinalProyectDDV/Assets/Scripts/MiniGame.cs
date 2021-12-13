@@ -21,7 +21,7 @@ public class MiniGame : MonoBehaviour
     //private CuboController cuboScript;
     void Start()
     {
-        //
+        //Debug.Log(GameManager.isMiniGameWon);
         
     }
 
@@ -61,17 +61,36 @@ public class MiniGame : MonoBehaviour
         //if ((colCheck == 8 || colCheck == 27 || colCheck == 64) && c3 == true) 
         {   
             GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("YOU WON! PORTAL IS OPEN");
-            
+            colCheck = 1;
+
             GameObject.Find("PortalGreenIdle").transform.position = new Vector3(11, 6, 24);
             GameManager.setPortalState(true);
-            timerCountDown = 1.5f;
             
             if (extraLvlEvents.mgWonEvent != null)
             {
               extraLvlEvents.mgWonEvent();  
             }
             
+            //Debug.Log(GameManager.isMiniGameWon);
 
+            if (GameManager.isMiniGameWon == false)
+            {
+                GameManager.isMiniGameWon = true; //New
+            }
+
+            //Debug.Log(GameManager.isMiniGameWon);
+
+
+            timerCountDown = 1.5f;
+            
+
+            //won event
+            if (extraLvlEvents.mgWonEvent != null)
+            {
+              extraLvlEvents.mgWonEvent();  
+            }
+            
+            
         }
         
         if ((colCheck != 8 || colCheck != 27 || colCheck != 64) && (timerCountDown <= 0))
