@@ -12,18 +12,18 @@ public class HealthbarController : MonoBehaviour
     
     private void Start() 
     {
-       hBar = GameObject.Find("/HUD/Canvas/Panel/HealthBar").GetComponent<Image>(); //New
+       hBar = GameObject.Find("/HUD/Canvas/Panel/HealthBar/HealthBar").GetComponent<Image>(); //New
 
     }
-    public void SetHealth(float health)
+    public void setHealth(float health)
     {
         hBar.fillAmount = health;
         
     }
 
-    public void SetMaxHealth(float health)
+    /*public void setMaxHealth(float health)
     {
         hBar.fillAmount = health;
 
-    }
+    }*/
 }

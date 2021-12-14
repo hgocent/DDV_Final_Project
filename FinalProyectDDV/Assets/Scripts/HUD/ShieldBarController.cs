@@ -9,17 +9,17 @@ public class ShieldBarController : MonoBehaviour
 
     private void Start() 
     {
-        sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar").GetComponent<Image>(); //New
+        sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar/ShieldBar").GetComponent<Image>(); //New
         //sBar.SetActive(false);
     }
-    public void SetShield(float shield)
+    public void setShield(float shield)
     {
         sBar.fillAmount = shield;
     }
-    public void SetMaxShield(float shield)
+    /*public void setMaxShield(float shield)
     {
         sBar.fillAmount = shield;
-    }
+    }*/
 
 
 }

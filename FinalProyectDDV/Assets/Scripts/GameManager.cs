@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public static int playerLives;
-    public static int playerBar;
+    public static float playerLifeBar; 
+    public static float PlayerShieldBar;
     public static int playerScore;
     
     public static bool isPortalOpen;
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     //[SerializeField] private int playerLives;
     [SerializeField] private GameObject gameoverPanel;
+    private GameObject livesText;
+
     //Image gameoverImg;
     //Text gameoverTxt;
     //[SerializeField] private TakeDamage playerScript;
@@ -34,7 +37,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             playerLives = 3;
-            playerBar = 100;
+            playerLifeBar = 1f;
+            PlayerShieldBar = 1f;;
             playerScore = 0;
             isPortalOpen = false;
             DontDestroyOnLoad(gameObject);
@@ -61,8 +65,10 @@ public class GameManager : MonoBehaviour
         gameoverTxt = gameoverPanel.transform.GetChild(0).GetComponent<Text>(); //New
         gameoverTxt.enabled = false; //New
         */
-        
-        Debug.Log(playerLives);
+        livesText = GameObject.Find("/HUD/Canvas/Panel/LivesText");
+        livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
+
+        Debug.Log("Lives: " + playerLives);
 
         soldier_events.OnEnemyDeath += CountEnemyDeath;
         player_events.OnPlayerDeath += ManageLives;
@@ -80,10 +86,12 @@ public class GameManager : MonoBehaviour
         
         playerLives --;
         Debug.Log("You lost 1 life");
-        Debug.Log(playerLives);
+        Debug.Log("Lives left: " + playerLives);
         
         if (playerLives <= 0)
         {
+            player_events.OnPlayerDeath -= ManageLives;
+
             gameoverPanel.SetActive(true);  //Old
             //gameoverImg.enabled = true; //New
             //gameoverTxt.enabled = true; //New
@@ -91,7 +99,8 @@ public class GameManager : MonoBehaviour
             //QUE SE DETENGA EL JUEGO
             Time.timeScale = 0;
         }
-        
+        livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
+
     }
 
     private void OnCliff()
@@ -107,11 +116,15 @@ public class GameManager : MonoBehaviour
         return pProcessingCheckmark;
     }
 
-    public static int getLife()
+    public static float getLife()
     {
-        return playerBar;
+        return playerLifeBar;
     }
 
+    public static float getShieldMeter()
+    {
+        return PlayerShieldBar;
+    }
     public static int getScore()
     {
         return playerScore;
@@ -131,9 +144,14 @@ public class GameManager : MonoBehaviour
     {
         return (pProcessingCheckmark = !pProcessingCheckmark);
     }
-    public static void decreaseLife(int damage)
+    public static void setLife(float newLife) //ex decreaseLife
     {
-        playerBar -= damage;
+        playerLifeBar = newLife;
+    }
+
+    public static void setShieldMeter(float newShieldValue) //ex decreaseShield
+    {
+        PlayerShieldBar = newShieldValue;
     }
 
     public static void increaseScore(int score)

@@ -15,7 +15,7 @@ public class ShieldController : MonoBehaviour
     }
     private void Start() 
     {
-        Debug.Log(GameManager.isMiniGameWon);
+        //Debug.Log(GameManager.isMiniGameWon);
 
         sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar"); //New
 

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TakeDamage : MonoBehaviour
 {
-    private float maxHealth = 1f;
-    private float currentHealth;
-    private float maxShield = 1f;
-    private float currentShield;
+    //private float maxHealth = 1f;
+    //; // is equal to GameManager.PlayerLifeBar
+    //private float maxShield = 1f;
+    //private float currentShield; //is equal to GameManager.PlayerShieldBar
     private GameObject shield; //  [SerializeField] 
     //[SerializeField] private GameObject gameoverPanel;
     
@@ -27,7 +27,10 @@ public class TakeDamage : MonoBehaviour
             shield.SetActive(false);
         }
         
-        ResetLifeBar();
+        //currentHealth = GameManager.getLife(); //
+        //currentShield = GameManager.getShieldMeter(); //
+
+        //ResetLifeBar(); //get healthbar & shieldbar from game manager on start and if its starts from begining it should be full
     }
 
     // Update is called once per frame
@@ -37,14 +40,17 @@ public class TakeDamage : MonoBehaviour
         //poner <= en current health si queremos que la verificacion sea instantanea al momento d perder la vida sino dejar en < para que la ultima bala indique la perdida completa d vida y dispare OnPlayerDeath;
 
         //if (shield.activeSelf == true)
-        {   if ((shield.activeSelf == true && currentHealth <= 0 && currentShield <= 0 ) || (shield.activeSelf == false && currentHealth <= 0))
+        {   if ((shield.activeSelf == true && GameManager.getLife() <= 0 && GameManager.getShieldMeter() <= 0 ) || (shield.activeSelf == false && GameManager.getLife() <= 0))
             {
                 //gameoverPanel.SetActive(true);
                 //QUE SE DETENGA EL JUEGO
                 //Time.timeScale = 0;
 
-                player_events.OnPlayerDeath();
-                
+                if (player_events.OnPlayerDeath != null) //if none is suscribed I do not call it
+                {
+                    player_events.OnPlayerDeath();
+                }
+
                 if (GameManager.playerLives > 0)
                 {
                     ResetLifeBar();
@@ -74,20 +80,22 @@ public class TakeDamage : MonoBehaviour
     {
         if ( shield.activeSelf == true)
         {
-            currentHealth -= damage/2;
-            healthbar.SetHealth(currentHealth);
-            currentShield -= damage;
-            shieldbar.SetShield(currentShield);
-            if (currentShield < 0 )
+            GameManager.setLife( GameManager.getLife() - (damage/2) );  //ex currentHealth -= damage/2;
+            healthbar.setHealth( GameManager.getLife() ); //ex healthbar.setHealth(currentHealth);
+
+            GameManager.setShieldMeter( GameManager.getShieldMeter() - damage );//ex currentShield -= damage;
+            shieldbar.setShield( GameManager.getShieldMeter() );//ex shieldbar.SetShield(currentShield);
+            
+            if ( GameManager.getShieldMeter() < 0 )
             {
-                currentHealth -= damage;
-                healthbar.SetHealth(currentHealth);
+                GameManager.setLife( GameManager.getLife() - (damage/2) ); //ex currentHealth -= damage;
+                healthbar.setHealth( GameManager.getLife() ); //ex healthbar.setHealth(currentHealth);
             }
         }
         else
         {
-            currentHealth -= damage;
-            healthbar.SetHealth(currentHealth);            
+            GameManager.setLife( GameManager.getLife() - (damage/2) ); //ex currentHealth -= damage;
+            healthbar.setHealth( GameManager.getLife() ); //ex healthbar.setHealth(currentHealth);           
         }
 
 
@@ -100,16 +108,17 @@ public class TakeDamage : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-            Damage(0.25f);
+            Damage(0.2f);
         }
         
     }
 
     private void ResetLifeBar()
     {
-        currentHealth = maxHealth;
-        healthbar.SetMaxHealth(maxHealth);
-        currentShield = maxShield;
-        shieldbar.SetMaxShield(maxShield);
+        GameManager.setLife(1f); //ex currentHealth = maxHealth;
+        healthbar.setHealth(1f); //ex healthbar.SetMaxHealth(maxHealth);
+
+        //GameManager.setShieldMeter(1f); //ex currentShield = maxShield; //no resetear el shield, solo vale por 1 cada vez que lo obtiene
+        //shieldbar.setShield(1f); //ex shieldbar.SetMaxShield(maxShield);
     }
 }

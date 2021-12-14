@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.getPortalState()==true)
+        if(GameManager.getPortalState() == true)
         {
             //Debug.Log("Portal extra level has been opened");
             
@@ -24,7 +24,6 @@ public class SceneController : MonoBehaviour
                 GameObject.Find("Player").transform.position = new Vector3(-31f, 1f, -4);
                 
                 GameManager.setPortalState(false);
-                //Debug.Log("Player de nivel 1");
 
             }/*else if (SceneManager.GetActiveScene().name == "Extralvl_1")
             {
