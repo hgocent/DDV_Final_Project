@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {   
     [SerializeField] private PostProcessingController postPContScr;
+    [SerializeField] private AudioSource clickPlay;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,13 @@ public class MainMenuController : MonoBehaviour
     public void OnClickBack()
     {
         //Debug.Log("CARGAR");
-        SceneManager.LoadScene("MainMenu");
+        clickPlay.Play();
+        SceneManager.LoadScene("FirstMenu");
+
+    }
+
+    public void OnClickExit() 
+    {
+       SceneManager.LoadScene("MainMenu"); 
     }
 }

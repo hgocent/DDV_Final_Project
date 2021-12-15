@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float distanceLaser = 20f;
     [SerializeField] private EnergyBarController energyBar;
     [SerializeField] private float speedBullet = 0.5f;
+    [SerializeField] private AudioSource fireSound;
     
     private float maxEnergy = 21f;
     private float currentEnergy;
@@ -70,6 +71,7 @@ public class PlayerAttack : MonoBehaviour
 
             canShoot = false;
             laserShoot = 0;
+            fireSound.Play();
             
             GameObject a = Instantiate(laserBullet, laserOrigin.transform.position, laserBullet.transform.rotation);
             a.transform.forward = direction; //New

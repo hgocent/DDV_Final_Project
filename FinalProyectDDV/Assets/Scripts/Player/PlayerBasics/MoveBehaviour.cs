@@ -3,13 +3,14 @@
 // MoveBehaviour inherits from GenericBehaviour. This class corresponds to basic walk and run behaviour, it is the default behaviour.
 public class MoveBehaviour : GenericBehaviour
 {
-	public float walkSpeed = 0.15f;                 // Default walk speed.
-	public float runSpeed = 1.0f;                   // Default run speed.
-	public float sprintSpeed = 2.0f;                // Default sprint speed.
-	public float speedDampTime = 0.1f;              // Default damp time to change the animations based on current speed.
-	public string jumpButton = "Jump";              // Default jump button.
-	public float jumpHeight = 1.5f;                 // Default jump height.
-	public float jumpIntertialForce = 10f;          // Default horizontal inertial force when jumping.
+	[SerializeField] private float walkSpeed = 0.15f;                 // Default walk speed.
+	[SerializeField] private float runSpeed = 1.0f;                   // Default run speed.
+	[SerializeField] private float sprintSpeed = 2.0f;                // Default sprint speed.
+	[SerializeField] private float speedDampTime = 0.1f;              // Default damp time to change the animations based on current speed.
+	[SerializeField] private string jumpButton = "Jump";              // Default jump button.
+	[SerializeField] private float jumpHeight = 1.5f;                 // Default jump height.
+	[SerializeField] private float jumpIntertialForce = 10f;          // Default horizontal inertial force when jumping.
+	
 
 	private float speed, speedSeeker;               // Moving speed.
 	private int jumpBool;                           // Animator variable related to jumping.
@@ -45,7 +46,7 @@ public class MoveBehaviour : GenericBehaviour
 	public override void LocalFixedUpdate()
 	{
 		// Call the basic movement manager.
-		MovementManagement(behaviourManager.GetH, behaviourManager.GetV);
+		MovementManagement(behaviourManager.GetH, behaviourManager.GetV);		
 
 		// Call the jump manager.
 		JumpManagement();
@@ -103,6 +104,9 @@ public class MoveBehaviour : GenericBehaviour
 		// On ground, obey gravity.
 		if (behaviourManager.IsGrounded())
 			behaviourManager.GetRigidBody.useGravity = true;
+			
+		
+
 
 		// Avoid takeoff when reached a slope end.
 		else if (!behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.GetRigidBody.velocity.y > 0)
