@@ -42,7 +42,7 @@ public class MainMenuController : MonoBehaviour
     public void OnClickBack()
     {
         //Debug.Log("CARGAR");
-        clickPlay.Play();
+        
         SceneManager.LoadScene("FirstMenu");
 
     }
