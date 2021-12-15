@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
 
     //[SerializeField] private int playerLives;
     [SerializeField] private GameObject gameoverPanel;
-    private GameObject livesText;
+    
+    //private GameObject livesText;
+    //private GameObject deathsText;
 
     //Image gameoverImg;
     //Text gameoverTxt;
@@ -65,9 +67,12 @@ public class GameManager : MonoBehaviour
         gameoverTxt = gameoverPanel.transform.GetChild(0).GetComponent<Text>(); //New
         gameoverTxt.enabled = false; //New
         */
-        livesText = GameObject.Find("/HUD/Canvas/Panel/LivesText");
-        livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
 
+        //livesText = GameObject.Find("/HUD/Canvas/Panel/LivesText");
+        //livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
+
+        //deathsText = GameObject.Find("/HUD/Canvas/Panel/DeathText");
+    
         Debug.Log("Lives: " + playerLives);
 
         soldier_events.OnEnemyDeath += CountEnemyDeath;
@@ -78,7 +83,8 @@ public class GameManager : MonoBehaviour
     private void CountEnemyDeath()
     {
         EnemyDeathCount++;
-        Debug.Log("Enemigos muertos: " + EnemyDeathCount); // Luego mostaremos la cantidad de enemigos eliminados en HUD;
+        //Debug.Log("Enemigos muertos: " + EnemyDeathCount);
+        //deathsText.GetComponent<Text>().text = EnemyDeathCount.ToString(); //set value on HUD
     }
 
     private void ManageLives()
@@ -99,7 +105,7 @@ public class GameManager : MonoBehaviour
             //QUE SE DETENGA EL JUEGO
             Time.timeScale = 0;
         }
-        livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
+        //livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
 
     }
 
@@ -116,6 +122,10 @@ public class GameManager : MonoBehaviour
         return pProcessingCheckmark;
     }
 
+    public static int getEnemyDeathCount()
+    {
+        return EnemyDeathCount;
+    }
     public static float getLife()
     {
         return playerLifeBar;
