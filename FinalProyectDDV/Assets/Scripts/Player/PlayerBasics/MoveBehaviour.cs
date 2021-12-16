@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 // MoveBehaviour inherits from GenericBehaviour. This class corresponds to basic walk and run behaviour, it is the default behaviour.
 public class MoveBehaviour : GenericBehaviour
@@ -39,6 +40,12 @@ public class MoveBehaviour : GenericBehaviour
 		if (!jump && Input.GetButtonDown(jumpButton) && behaviourManager.IsCurrentBehaviour(this.behaviourCode) && !behaviourManager.IsOverriding())
 		{
 			jump = true;
+		}
+
+		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) ||Input.GetKeyDown(KeyCode.D))
+		{
+			//Debug.Log("I'm walking...");
+			gameObject.GetComponent<AudioSource>().Play();
 		}
 	}
 
@@ -103,7 +110,10 @@ public class MoveBehaviour : GenericBehaviour
 	{
 		// On ground, obey gravity.
 		if (behaviourManager.IsGrounded())
+		{
 			behaviourManager.GetRigidBody.useGravity = true;
+		}
+			
 			
 		
 
