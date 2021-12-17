@@ -42,11 +42,12 @@ public class MoveBehaviour : GenericBehaviour
 			jump = true;
 		}
 
-		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) ||Input.GetKeyDown(KeyCode.D))
+		//verificador de movimiento
+		if( behaviourManager.IsMoving() )
 		{
-			//Debug.Log("I'm walking...");
-			gameObject.GetComponent<AudioSource>().Play();
+			Debug.Log("I'm moving");
 		}
+
 	}
 
 	// LocalFixedUpdate overrides the virtual function of the base class.
