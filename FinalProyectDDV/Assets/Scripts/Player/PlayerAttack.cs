@@ -9,7 +9,8 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject laserOrigin; 
-    [SerializeField] private GameObject laserBullet; 
+    [SerializeField] private GameObject laserBullet;
+    [SerializeField] private GameObject powerUp; 
     [SerializeField] private float laserCooldown = 0.5f;
     [SerializeField] private float laserShoot = 1f;
     [SerializeField] private float distanceLaser = 20f;
@@ -17,9 +18,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float speedBullet = 0.5f;
     [SerializeField] private AudioSource fireSound;
     
-    private float maxEnergy = 21f;
+    private float maxEnergy = 1f;
     private float currentEnergy;
-    private float energyShoot = 0.15f;
+    private float energyShoot = 0.10f;
     private bool canShoot = true;
 
     public Transform cam; //New
@@ -64,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
         Vector3 hitPosition; //new
         Vector3 direction; //New
 
-        if(Input.GetKey("mouse 0"))
+        if(Input.GetKey("mouse 0") && Input.GetKey("mouse 1"))
         {   
             hitPosition = cam.transform.position + cam.forward * 10; //New
             direction = hitPosition - laserOrigin.transform.position; //New
@@ -100,5 +101,14 @@ public class PlayerAttack : MonoBehaviour
         currentEnergy -= energy;
         energyBar.SetEnergy(currentEnergy);
 
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "PowerUp")
+        {
+            currentEnergy = maxEnergy;            
+            energyBar.SetEnergy(currentEnergy);
+            Destroy(powerUp);
+        }
     }
 }

@@ -8,6 +8,7 @@ public class Soldiers : MonoBehaviour
     [SerializeField] private GameObject shootOrigin;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] protected SoldierData myData;
+    
     //[SerializeField] private ParticleSystem muzzleShoot; //temporarily turned off
     
     

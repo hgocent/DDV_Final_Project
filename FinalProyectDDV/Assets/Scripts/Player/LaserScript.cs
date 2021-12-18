@@ -5,6 +5,8 @@ using UnityEngine;
 public class LaserScript : MonoBehaviour
 {
     private float laserTime = 5f;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class LaserScript : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" || other.tag == "Enviroment")
         {
             Destroy(gameObject);
         }
