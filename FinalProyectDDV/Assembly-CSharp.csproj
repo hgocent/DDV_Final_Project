@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\LaserScript.cs" />
      <Compile Include="Assets\Scripts\Player\TakeDamage.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\TakeablePowerUp.cs" />
      <Compile Include="Assets\Player\VolumetricLines\Scripts\VolumetricLineVertexData.cs" />
      <Compile Include="Assets\Scripts\Player\player_events.cs" />
      <Compile Include="Assets\Enviroment\Efectos_Prueba\Scripts\ARPGFXRotation.cs" />
@@ -65,10 +66,14 @@
      <Compile Include="Assets\Scripts\HUD\EnergyBarController.cs" />
      <Compile Include="Assets\Scripts\Enemies\SoldierShotgun.cs" />
      <Compile Include="Assets\Scripts\SoldierData.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\CustomizablePowerUp.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\PowerUpManager.cs" />
      <Compile Include="Assets\Enviroment\Efectos_Prueba\Scripts\ARPGFXLightFade.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\Utility\Singleton.cs" />
      <Compile Include="Assets\Player\VolumetricLines\Scripts\VolumetricLineBehavior.cs" />
      <Compile Include="Assets\Scripts\HUD\HealthbarController.cs" />
      <Compile Include="Assets\Enviroment\Efectos_Prueba\Scripts\ARPGFXLightFlicker.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\PowerUpRotation.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBasics\PlayerSingleton.cs" />
      <Compile Include="Assets\Scripts\Enemies\EnemyController.cs" />
      <Compile Include="Assets\UI\Script\PostProcessingController.cs" />
@@ -86,14 +91,11 @@
      <Compile Include="Assets\Scripts\LightController.cs" />
      <Compile Include="Assets\Scripts\MiniGame.cs" />
      <Compile Include="Assets\Soldier_Enemy\Soldier_Guns\Scripts\GunView.cs" />
+     <Compile Include="Assets\PowerUp\Scripts\ScaleParticles.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonOrbitCamBasic.cs" />
      <Compile Include="Assets\Scripts\Enemies\WaypointsMovement.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\TakeablePowerUp.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\Utility\Singleton.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\PowerUpManager.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\CustomizablePowerUp.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\PowerUpRotation.cs" />
-     <Compile Include="Assets\PowerUp\Scripts\ScaleParticles.cs" />
+     <Compile Include="Assets\Nivel_0\_Barking_Dog\Common Scripts\Turn_Move.cs" />
+     <Compile Include="Assets\Nivel_0\_Barking_Dog\Common Scripts\MouseLook.cs" />
      <None Include="Assets\Player\VolumetricLines\BuiltInRenderPipeline\Shaders\_LineStripShader.cginc" />
      <None Include="Assets\Sounds\PlayerSounds\FireSound\ReadMe.txt" />
      <None Include="Assets\Enviroment\Efectos_Prueba\Readme.txt" />
@@ -106,6 +108,7 @@
      <None Include="Assets\Player\VolumetricLines\BuiltInRenderPipeline\Shaders\LineStrip-LightSaber.shader" />
      <None Include="Assets\Player\VolumetricLines\BuiltInRenderPipeline\Shaders\SingleLine-LightSaber.shader" />
      <None Include="Assets\Enviroment\SkySerie Freebie\Hdri setup.txt" />
+     <None Include="Assets\Nivel_0\_Barking_Dog\Readme_Please.txt" />
     <Reference Include="UnityEngine">
         <HintPath>F:\UnityProyectos\2020.3.13f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
