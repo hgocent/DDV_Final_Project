@@ -22,7 +22,7 @@ public class TextMessageExtraLvl : MonoBehaviour
         //Debug.Log("I'M IN");
         if (other.gameObject.tag == "PlayerL1a")
         {
-            GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("Match a color in all circles");
+            GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("Match a color");
         }
     }
     

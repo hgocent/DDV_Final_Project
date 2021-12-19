@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float laserCooldown = 0.5f;
     [SerializeField] private float laserShoot = 1f;
     [SerializeField] private float distanceLaser = 20f;
-    [SerializeField] private EnergyBarController energyBar;
+    private EnergyBarController energyBar; // ex [SerializeField] 
     [SerializeField] private float speedBullet = 0.5f;
     [SerializeField] private AudioSource fireSound;
     
@@ -24,10 +25,12 @@ public class PlayerAttack : MonoBehaviour
     private bool canShoot = true;
 
     public Transform cam; //New
+    int counter=0;
 
     // Start is called before the first frame update
     void Start()
     {
+        energyBar = GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<EnergyBarController>(); //////////////////////
         currentEnergy = maxEnergy;
         energyBar.SetMaxEnergy(maxEnergy);
     }
@@ -35,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (canShoot)
         {
             LaserShoot();
@@ -54,7 +58,14 @@ public class PlayerAttack : MonoBehaviour
                 canShoot = true;
             }
         }
-        
+
+        //temporal
+        /*if (SceneManager.GetActiveScene().name == "Extralvl_1" && counter != 1)
+        {
+            energyBar = GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<EnergyBarController>(); //////////////////////
+            counter = 1;
+        }*/
+
     }
 
 
@@ -67,6 +78,8 @@ public class PlayerAttack : MonoBehaviour
 
         if(Input.GetKey("mouse 0") && Input.GetKey("mouse 1"))
         {   
+            //Debug.Log("mouse click");
+
             hitPosition = cam.transform.position + cam.forward * 10; //New
             direction = hitPosition - laserOrigin.transform.position; //New
 

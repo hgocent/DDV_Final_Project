@@ -90,6 +90,7 @@ public class MiniGame : MonoBehaviour
               extraLvlEvents.mgWonEvent();  
             }
             
+            gameObject.SetActive(false); /////////////////////
             
         }
         
@@ -145,6 +146,15 @@ public class MiniGame : MonoBehaviour
     {
         button = false;
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        button = true;
+    } 
+    void OnCollisionExit(Collision col)
+    {
+        button = false;
+    } 
 
 
 }

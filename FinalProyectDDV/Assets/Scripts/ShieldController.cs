@@ -31,14 +31,15 @@ public class ShieldController : MonoBehaviour
      //Debug.Log(other.tag.Substring(0, 6));
       if ((other.tag.Substring(0, 6) == "Player") && (GameManager.isMiniGameWon == true))
       {
-          //shield.SetActive(false);
-          sBar.SetActive(true);
-          extraLvlEvents.mgWonEvent -= ActivateShield;
+        //shield.SetActive(false);
+        sBar.SetActive(true);
+        extraLvlEvents.mgWonEvent -= ActivateShield;
 
-          //Destroy(gameObject); //shield
-          shield.SetActive(false);
+        //Destroy(gameObject); //shield
+        shield.SetActive(false);
       }  
-    } 
+    }
+    
 
     private void ActivateShield()
     {
