@@ -45,7 +45,7 @@ public class MoveBehaviour : GenericBehaviour
 		//verificador de movimiento
 		if( behaviourManager.IsMoving() )
 		{
-			Debug.Log("I'm moving");
+			//Debug.Log("I'm moving");
 		}
 
 	}

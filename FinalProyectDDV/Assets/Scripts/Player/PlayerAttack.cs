@@ -19,13 +19,13 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float speedBullet = 0.5f;
     [SerializeField] private AudioSource fireSound;
     
-    private float maxEnergy = 1f;
+    private float maxEnergy = 1f; //1f
     private float currentEnergy;
-    private float energyShoot = 0.10f;
+    private float energyShoot = 0.01f; //% of energy per laser shoot
     private bool canShoot = true;
 
     public Transform cam; //New
-    int counter=0;
+    //int counter=0;
 
     // Start is called before the first frame update
     void Start()
@@ -119,9 +119,11 @@ public class PlayerAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "PowerUp")
         {
+            Destroy(powerUp);
+
             currentEnergy = maxEnergy;            
             energyBar.SetEnergy(currentEnergy);
-            Destroy(powerUp);
+            //Destroy(powerUp);
         }
     }
 }

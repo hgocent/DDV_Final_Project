@@ -22,6 +22,11 @@ public class MiniGame : MonoBehaviour
     void Start()
     {
         //Debug.Log(GameManager.isMiniGameWon);
+
+        if (GameManager.isMiniGameWon == false)
+        {
+            GameObject.Find("/Player/Shield").SetActive(false); //deactivate equiped shield if minigame is not won yet
+        }
         
     }
 
@@ -60,7 +65,7 @@ public class MiniGame : MonoBehaviour
         //if (colCheck > 1)
         if ((colCheck == 8 || colCheck == 27 || colCheck == 64) && c3 == true) 
         {   
-            GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("YOU WON! A portal has opened");
+            GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("YOU WON!\nA portal has opened");
             colCheck = 1;
 
             GameObject.Find("PortalGreenIdle").transform.position = new Vector3(11, 6, 24);
@@ -82,13 +87,12 @@ public class MiniGame : MonoBehaviour
 
 
             timerCountDown = 1.5f;
-            
 
             //won event
-            if (extraLvlEvents.mgWonEvent != null)
+            /*if (extraLvlEvents.mgWonEvent != null)
             {
               extraLvlEvents.mgWonEvent();  
-            }
+            }*/
             
             gameObject.SetActive(false); /////////////////////
             
@@ -138,23 +142,35 @@ public class MiniGame : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {   
-        button = true;
-        OnSwitchLight?.Invoke();
+        //Debug.Log(other.tag);
+
+        if(other.tag == "Laser")
+        {
+            button = true;
+            //OnSwitchLight?.Invoke();
+        }
+        
     }
-    
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         button = false;
-    }
+    }*/
 
-    void OnCollisionEnter(Collision col)
+
+    /*void OnCollisionEnter(Collision col)
     {
-        button = true;
+        Debug.Log(col.gameObject.tag);
+
+        
+        
     } 
     void OnCollisionExit(Collision col)
     {
-        button = false;
-    } 
+        if(col.gameObject.tag == "Laser")
+        {
+            button = false;
+        }
+    } */
 
 
 }

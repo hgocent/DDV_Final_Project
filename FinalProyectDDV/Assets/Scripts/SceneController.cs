@@ -9,7 +9,10 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameManager.isMiniGameWon == false)
+        {
+            GameObject.Find("/Player/Shield").SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class SceneController : MonoBehaviour
             
             if (SceneManager.GetActiveScene().name == "Nivel_1")//if (gameObject.tag == "PlayerL1")
             {
-                GameObject.Find("Player").transform.position = new Vector3(-31f, 1f, -4);
+                GameObject.Find("Player").transform.position = new Vector3(-17f, 1.01f, 5);
                 
                 GameManager.setPortalState(false);
 

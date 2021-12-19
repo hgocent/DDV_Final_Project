@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
         soldier_events.OnEnemyDeath += CountEnemyDeath;
         player_events.OnPlayerDeath += ManageLives;
         player_events.OnPlayerCliff += OnCliff;
+        
     }
 
     private void CountEnemyDeath()

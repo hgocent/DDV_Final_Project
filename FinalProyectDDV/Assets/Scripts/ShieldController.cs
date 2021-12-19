@@ -37,6 +37,7 @@ public class ShieldController : MonoBehaviour
 
         //Destroy(gameObject); //shield
         shield.SetActive(false);
+        GameObject.Find("/Player/Shield").SetActive(true); //activate player shield (equiped shield)
       }  
     }
     
