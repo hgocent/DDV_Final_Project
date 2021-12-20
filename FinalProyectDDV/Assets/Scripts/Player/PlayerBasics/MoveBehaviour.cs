@@ -11,6 +11,7 @@ public class MoveBehaviour : GenericBehaviour
 	[SerializeField] private string jumpButton = "Jump";              // Default jump button.
 	[SerializeField] private float jumpHeight = 1.5f;                 // Default jump height.
 	[SerializeField] private float jumpIntertialForce = 10f;          // Default horizontal inertial force when jumping.
+	[SerializeField] private AudioSource playerWalk;
 	
 
 	private float speed, speedSeeker;               // Moving speed.
@@ -45,10 +46,15 @@ public class MoveBehaviour : GenericBehaviour
 		//verificador de movimiento
 		if( behaviourManager.IsMoving() )
 		{
-			//Debug.Log("I'm moving");
+			//Invoke(nameof(PlayerSound), 2f);
+			Debug.Log("I'm moving");
 		}
 
 	}
+	/*private void PlayerSound()
+	{
+		playerWalk.Play();
+	}*/
 
 	// LocalFixedUpdate overrides the virtual function of the base class.
 	public override void LocalFixedUpdate()
