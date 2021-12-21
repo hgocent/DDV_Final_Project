@@ -9,10 +9,10 @@ public class SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.isMiniGameWon == false)
+        /*if (GameManager.isMiniGameWon == false)
         {
             GameObject.Find("/Player/Shield").SetActive(false);
-        }
+        }*/
     }
 
     // Update is called once per frame

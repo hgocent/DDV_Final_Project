@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         
         playerLives --;
         Debug.Log("You lost 1 life");
-        Debug.Log("Lives left: " + playerLives);
+        //Debug.Log("Lives left: " + playerLives);
         
         if (playerLives <= 0)
         {

@@ -22,11 +22,12 @@ public class TakeDamage : MonoBehaviour
         healthbar = GameObject.Find("/HUD/Canvas/Panel/HealthBar/HealthBar").GetComponent<HealthbarController>();
         shieldbar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar/ShieldBar").GetComponent<ShieldBarController>();
 
+        //if (GameManager.isMiniGameWon == false || (GameManager.isMiniGameWon == true && GameManager.getShieldMeter() <= 0) )
         if (GameManager.isMiniGameWon == false)
         {
             shield.SetActive(false);
         }
-        
+             
         //currentHealth = GameManager.getLife(); //
         //currentShield = GameManager.getShieldMeter(); //
 
@@ -72,7 +73,6 @@ public class TakeDamage : MonoBehaviour
         }*/
         
         
-        
     }
     
 
@@ -80,8 +80,8 @@ public class TakeDamage : MonoBehaviour
     {
         if ( shield.activeSelf == true)
         {
-            GameManager.setLife( GameManager.getLife() - (damage/2) );  //ex currentHealth -= damage/2;
-            healthbar.setHealth( GameManager.getLife() ); //ex healthbar.setHealth(currentHealth);
+            //GameManager.setLife( GameManager.getLife() - (damage/2) );  //ex currentHealth -= damage/2;
+            //healthbar.setHealth( GameManager.getLife() ); //ex healthbar.setHealth(currentHealth);
 
             GameManager.setShieldMeter( GameManager.getShieldMeter() - damage );//ex currentShield -= damage;
             shieldbar.setShield( GameManager.getShieldMeter() );//ex shieldbar.SetShield(currentShield);

@@ -6,7 +6,7 @@ using System;
 
 public class ShieldController : MonoBehaviour
 {   
-    [SerializeField] private GameObject shield; // 
+    [SerializeField] private GameObject shield; // este es el shield que se encuentra en el extralevel
     private GameObject sBar;
     
     private void Awake() 
@@ -23,8 +23,6 @@ public class ShieldController : MonoBehaviour
         
     }
     
-    // Start is called before the first frame update
-    
     private void OnTriggerEnter(Collider other) 
     {
         
@@ -37,17 +35,17 @@ public class ShieldController : MonoBehaviour
 
         //Destroy(gameObject); //shield
         shield.SetActive(false);
-        GameObject.Find("/Player/Shield").SetActive(true); //activate player shield (equiped shield)
+        
       }  
     }
     
 
-    private void ActivateShield()
+    private void ActivateShield() //activate shield bar on HUD
     {
-        if (GameManager.isMiniGameWon == false)
+        //if (GameManager.isMiniGameWon == false)
         {
             shield.SetActive(true);
-            extraLvlEvents.mgWonEvent -= ActivateShield;
+            //extraLvlEvents.mgWonEvent -= ActivateShield; ----H
         }
     }
 }
