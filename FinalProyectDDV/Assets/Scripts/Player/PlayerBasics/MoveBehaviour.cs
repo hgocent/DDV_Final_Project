@@ -47,7 +47,7 @@ public class MoveBehaviour : GenericBehaviour
 		if( behaviourManager.IsMoving() )
 		{
 			//Invoke(nameof(PlayerSound), 2f);
-			Debug.Log("I'm moving");
+			//Debug.Log("I'm moving");
 		}
 
 	}
