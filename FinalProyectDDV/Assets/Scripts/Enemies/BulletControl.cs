@@ -28,7 +28,7 @@ public class BulletControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "PlayerL1")
+        if (other.gameObject.tag == "PlayerL1" || other.gameObject.tag == "Enviroment")
         {
             Destroy(gameObject);
         }
