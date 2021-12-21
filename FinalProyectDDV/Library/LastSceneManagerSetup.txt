@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Nivel_0/_Barking_Dog/3D Free Modular Kit/Nivel_0.unity
+- path: Assets/Scenes/Extralvl_1.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
