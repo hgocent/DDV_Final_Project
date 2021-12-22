@@ -6,20 +6,27 @@ using System;
 
 public class ShieldController : MonoBehaviour
 {   
-    [SerializeField] private GameObject shield; // este es el shield que se encuentra en el extralevel
+    [SerializeField] private GameObject shield; // shield before being catched
+    private GameObject equipedShield; // shield equipped on player
     private GameObject sBar;
-    
-    private void Awake() 
-    {   
-        //
-    }
+
     private void Start() 
     {
         //Debug.Log(GameManager.isMiniGameWon);
+        equipedShield = GameObject.Find("/Player/Shield"); 
 
-        sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar"); //New
+        sBar = GameObject.Find("/HUD/Canvas/Panel/ShieldBar"); 
 
         extraLvlEvents.mgWonEvent += ActivateShield;
+
+        if (GameManager.isMiniGameWon == false || GameManager.isMiniGameWon == true && GameManager.getShieldMeter() <= 0)
+        {
+            equipedShield.SetActive(false);
+        }
+        
+    }
+    private void Update()
+    {
         
     }
     
@@ -29,23 +36,23 @@ public class ShieldController : MonoBehaviour
      //Debug.Log(other.tag.Substring(0, 6));
       if ((other.tag.Substring(0, 6) == "Player") && (GameManager.isMiniGameWon == true))
       {
-        //shield.SetActive(false);
+        
         sBar.SetActive(true);
         extraLvlEvents.mgWonEvent -= ActivateShield;
 
-        //Destroy(gameObject); //shield
+        //Destroy(gameObject); //shield on the floor
         shield.SetActive(false);
-        
+        equipedShield.SetActive(true); // equipped shield on player
       }  
     }
     
 
     private void ActivateShield() //activate shield bar on HUD
     {
-        //if (GameManager.isMiniGameWon == false)
+        if (GameManager.isMiniGameWon == false)
         {
             shield.SetActive(true);
-            //extraLvlEvents.mgWonEvent -= ActivateShield; ----H
+            //extraLvlEvents.mgWonEvent -= ActivateShield;
         }
     }
 }
