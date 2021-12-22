@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     
     private float maxEnergy = 1f; //1f
     private float currentEnergy;
-    private float energyShoot = 0.01f; //% of energy per laser shoot
+    [SerializeField] private float energyShoot = 0.10f; //% of energy per laser shoot
     private bool canShoot = true;
 
     public Transform cam; //New
