@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static int playerLives;
     public static float playerLifeBar; 
     public static float PlayerShieldBar;
+    public static float PlayerEnergyBar;
     public static int playerScore;
     
     public static bool isPortalOpen;
@@ -40,7 +41,8 @@ public class GameManager : MonoBehaviour
             instance = this;
             playerLives = 3;
             playerLifeBar = 1f;
-            PlayerShieldBar = 1f;;
+            PlayerShieldBar = 1f;
+            PlayerEnergyBar = 1f;
             playerScore = 0;
             isPortalOpen = false;
             DontDestroyOnLoad(gameObject);
@@ -136,6 +138,11 @@ public class GameManager : MonoBehaviour
     {
         return PlayerShieldBar;
     }
+
+    public static float getEnergyMeter()
+    {
+        return PlayerEnergyBar;
+    }
     public static int getScore()
     {
         return playerScore;
@@ -165,6 +172,10 @@ public class GameManager : MonoBehaviour
         PlayerShieldBar = newShieldValue;
     }
 
+    public static void setPEnergyMeter(float newEnergy)
+    {
+        PlayerEnergyBar = newEnergy;
+    }
     public static void increaseScore(int score)
     {
         playerScore += score;

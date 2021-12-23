@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class EnergyBarController : MonoBehaviour
 {
-    [SerializeField] private Image eBar;
+    private Image eBar; // ex [SerializeField] 
     
     
     // Start is called before the first frame update
-    
+    private void Start() 
+    {
+        eBar = GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<Image>(); //New
+    }
     
     public void SetEnergy(float energy)
     {
