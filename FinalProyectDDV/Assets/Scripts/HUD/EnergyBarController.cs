@@ -20,9 +20,9 @@ public class EnergyBarController : MonoBehaviour
         
     }
 
-    public void SetMaxEnergy(float energy)
+    /*public void SetMaxEnergy(float energy)
     {
         eBar.fillAmount = energy;
 
-    }
+    }*/
 }

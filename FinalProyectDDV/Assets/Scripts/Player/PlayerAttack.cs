@@ -19,8 +19,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float speedBullet = 0.5f;
     [SerializeField] private AudioSource fireSound;
     
-    private float maxEnergy = 1f; //1f
-    private float currentEnergy;
+   //private float maxEnergy = 1f; //1f
+    //private float currentEnergy;
     [SerializeField] private float energyShoot = 0.10f; //% of energy per laser shoot
     private bool canShoot = true;
 
@@ -31,8 +31,11 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         energyBar = GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<EnergyBarController>(); //////////////////////
-        currentEnergy = maxEnergy;
-        energyBar.SetMaxEnergy(maxEnergy);
+        //currentEnergy = maxEnergy;
+        //energyBar.SetMaxEnergy(maxEnergy);
+        
+        //GameManager.setPEnergyMeter(1f);
+        //energyBar.GetComponent<Image>().fillAmount = GameManager.getEnergyMeter();
     }
 
     // Update is called once per frame
@@ -50,11 +53,12 @@ public class PlayerAttack : MonoBehaviour
         if (laserShoot > laserCooldown)
         {
             
-            if (currentEnergy < 0){
-                canShoot = false;
-                //laserShoot = 0;                
+            if (GameManager.getEnergyMeter() <= 0) // old local function - if (currentEnergy < 0)
+            { 
+                canShoot = false;              
                 //Debug.Log("Sin energia");
-            }else {
+            }else 
+            {
                 canShoot = true;
             }
         }
@@ -94,9 +98,12 @@ public class PlayerAttack : MonoBehaviour
 
             a.GetComponent<Rigidbody>().AddForce((direction.normalized * distanceLaser)*speedBullet, ForceMode.Impulse); //new
             
-            DecreaseEnergy(energyShoot);
+            //old local functions - DecreaseEnergy(energyShoot);
+            GameManager.setPEnergyMeter(GameManager.getEnergyMeter()-energyShoot);
+            energyBar.SetEnergy(GameManager.getEnergyMeter());
             
-            if (currentEnergy < 0){
+            if (GameManager.getEnergyMeter() <= 0)
+            {
                 canShoot = false;
                 laserShoot = 0;
                 laserCooldown = 0;
@@ -108,22 +115,25 @@ public class PlayerAttack : MonoBehaviour
         }
         
     }
-
-    private void DecreaseEnergy(float energy)
+    
+    //old local function
+    /*private void DecreaseEnergy(float energy)
     {
         currentEnergy -= energy;
         energyBar.SetEnergy(currentEnergy);
 
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "PowerUp")
         {
             Destroy(powerUp);
 
-            currentEnergy = maxEnergy;            
-            energyBar.SetEnergy(currentEnergy);
-            //Destroy(powerUp);
+            GameManager.setPEnergyMeter(1f);
+            energyBar.SetEnergy(1f);           
+            //old local functions - currentEnergy = maxEnergy;            
+            //old local functions - energyBar.SetEnergy(currentEnergy);
+            
         }
     }
 }
