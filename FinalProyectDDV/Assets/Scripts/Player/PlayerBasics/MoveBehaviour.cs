@@ -5,13 +5,13 @@ using System.Collections;
 public class MoveBehaviour : GenericBehaviour
 {
 	[SerializeField] private float walkSpeed = 0.15f;                 // Default walk speed.
-	[SerializeField] private float runSpeed = 1.0f;                   // Default run speed.
-	[SerializeField] private float sprintSpeed = 2.0f;                // Default sprint speed.
+	[SerializeField] private float runSpeed = 1f;                   // Default run speed.
+	[SerializeField] private float sprintSpeed = 2.0f;                // Default sprint speed. 2.0f
 	[SerializeField] private float speedDampTime = 0.1f;              // Default damp time to change the animations based on current speed.
 	[SerializeField] private string jumpButton = "Jump";              // Default jump button.
-	[SerializeField] private float jumpHeight = 1.5f;                 // Default jump height.
-	[SerializeField] private float jumpIntertialForce = 10f;          // Default horizontal inertial force when jumping.
-	[SerializeField] private AudioSource playerWalk;
+	[SerializeField] private float jumpHeight = 1.5f;                 // Default jump height. 1.5f
+	[SerializeField] private float jumpIntertialForce = 10f;          // Default horizontal inertial force when jumping. 10f
+	//[SerializeField] private AudioSource playerWalk;
 	
 
 	private float speed, speedSeeker;               // Moving speed.
@@ -46,15 +46,11 @@ public class MoveBehaviour : GenericBehaviour
 		//verificador de movimiento
 		if( behaviourManager.IsMoving() )
 		{
-			//Invoke(nameof(PlayerSound), 2f);
 			//Debug.Log("I'm moving");
 		}
 
 	}
-	/*private void PlayerSound()
-	{
-		playerWalk.Play();
-	}*/
+	
 
 	// LocalFixedUpdate overrides the virtual function of the base class.
 	public override void LocalFixedUpdate()
@@ -73,7 +69,7 @@ public class MoveBehaviour : GenericBehaviour
 		if (jump && !behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.IsGrounded())
 		{
 			// Set jump related parameters.
-			behaviourManager.LockTempBehaviour(this.behaviourCode);
+			behaviourManager.LockTempBehaviour(this.behaviourCode); 
 			behaviourManager.GetAnim.SetBool(jumpBool, true);
 			// Is a locomotion jump?
 			if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
@@ -81,10 +77,12 @@ public class MoveBehaviour : GenericBehaviour
 				// Temporarily change player friction to pass through obstacles.
 				GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
 				GetComponent<CapsuleCollider>().material.staticFriction = 0f;
+				
 				// Remove vertical velocity to avoid "super jumps" on slope ends.
 				RemoveVerticalVelocity();
+				
 				// Set jump vertical impulse velocity.
-				float velocity = 2f * Mathf.Abs(Physics.gravity.y) * jumpHeight;
+				float velocity = 2f * Mathf.Abs(Physics.gravity.y) * jumpHeight;  //2f
 				velocity = Mathf.Sqrt(velocity);
 				behaviourManager.GetRigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
 			}
@@ -96,6 +94,7 @@ public class MoveBehaviour : GenericBehaviour
 			if (!behaviourManager.IsGrounded() && !isColliding && behaviourManager.GetTempLockStatus())
 			{
 				behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
+				
 			}
 			// Has landed?
 			if ((behaviourManager.GetRigidBody.velocity.y < 0) && behaviourManager.IsGrounded())
@@ -107,7 +106,7 @@ public class MoveBehaviour : GenericBehaviour
 				// Set jump related parameters.
 				jump = false;
 				behaviourManager.GetAnim.SetBool(jumpBool, false);
-				behaviourManager.UnlockTempBehaviour(this.behaviourCode);
+				behaviourManager.UnlockTempBehaviour(this.behaviourCode); 
 			}
 		}
 	}
@@ -122,13 +121,11 @@ public class MoveBehaviour : GenericBehaviour
 		}
 			
 			
-		
-
 
 		// Avoid takeoff when reached a slope end.
 		else if (!behaviourManager.GetAnim.GetBool(jumpBool) && behaviourManager.GetRigidBody.velocity.y > 0)
 		{
-			RemoveVerticalVelocity();
+			RemoveVerticalVelocity();  
 		}
 
 		// Call function that deals with player orientation.
