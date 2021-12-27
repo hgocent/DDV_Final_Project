@@ -33,33 +33,33 @@ public class FloatingController : MonoBehaviour
         {
             switch (gameObject.name)
             {
-            case "Cylinder (1)":
-                newY = Mathf.Sin(Time.time * 5f);
-            break;
-            case "Cylinder (2)":
-                newY = Mathf.Sin(Time.time * 4f);
-            break;
-            case "Cylinder (3)":
-                newY = Mathf.Sin(Time.time * 3f);
-            break;
-            case "floor_hover1":
-                newY = Mathf.Sin(Time.time * 2f);
-            break;
-            case "floor_hover2":
-                newY = Mathf.Sin(Time.time * 3f);
-                FloorHeight = 4f;
-            break;
-            case "floor_hover3":
-                newY = Mathf.Sin(Time.time * 2.7f);
-                FloorHeight = 8f;
-            break;
-            case "floor_hover4":
-                newY = Mathf.Sin(Time.time * 3.1f);
-                FloorHeight = 9f;
-            break;
-            default:
-                //print ("Incorrect");
-            break;
+                case "Cylinder (1)":
+                    newY = Mathf.Sin(Time.time * 5f);
+                break;
+                case "Cylinder (2)":
+                    newY = Mathf.Sin(Time.time * 4f);
+                break;
+                case "Cylinder (3)":
+                    newY = Mathf.Sin(Time.time * 3f);
+                break;
+                case "floor_hover1":
+                    newY = Mathf.Sin(Time.time * 2f);
+                break;
+                case "floor_hover2":
+                    newY = Mathf.Sin(Time.time * 3f);
+                    FloorHeight = 4f;
+                break;
+                case "floor_hover3":
+                    newY = Mathf.Sin(Time.time * 2.7f);
+                    FloorHeight = 8f;
+                break;
+                case "floor_hover4":
+                    newY = Mathf.Sin(Time.time * 3.1f);
+                    FloorHeight = 9f;
+                break;
+                default:
+                    //print ("Incorrect");
+                break;
             }
             if(gameObject.name.Substring(0, 8) == "Cylinder")
             { 

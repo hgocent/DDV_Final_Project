@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static float PlayerEnergyBar;
     public static int playerScore;
     
-    public static bool isPortalOpen;
+    public static bool isExtraLevelGreenPortalOpen;
     public static bool isMiniGameWon;
     public static int EnemyDeathCount = 0;
     
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             PlayerShieldBar = 1f;
             PlayerEnergyBar = 1f;
             playerScore = 0;
-            isPortalOpen = false;
+            isExtraLevelGreenPortalOpen = false;
             DontDestroyOnLoad(gameObject);
             
 
@@ -83,9 +83,20 @@ public class GameManager : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        
+    }
     private void CountEnemyDeath()
     {
         EnemyDeathCount++;
+
+        if(getEnemyDeathCount() > 0)
+        {
+            Debug.Log("Maté un enemigo, debo mover el portal. " + GameObject.Find("/ENVIROMENT--/ExtraLvl").transform.position);
+            GameObject.Find("/ENVIROMENT--/ExtraLvl").transform.position = new Vector3(-11f,8f,-80f);
+        }
+
         //Debug.Log("Enemigos muertos: " + EnemyDeathCount);
         //deathsText.GetComponent<Text>().text = EnemyDeathCount.ToString(); //set value on HUD
     }
@@ -153,9 +164,9 @@ public class GameManager : MonoBehaviour
         return playerLives;
     }
 
-    public static bool getPortalState()
+    public static bool getExtraLevelGreenPortalState()
     {
-        return isPortalOpen;
+        return isExtraLevelGreenPortalOpen;
     }
 
     public static bool setPprocessingCheckmark()
@@ -181,9 +192,9 @@ public class GameManager : MonoBehaviour
         playerScore += score;
     }
 
-    public static void setPortalState(bool state)
+    public static void setExtraLevelGreenPortalState(bool state)
     {
-        isPortalOpen = state;
+        isExtraLevelGreenPortalOpen = state;
     }
 
 }

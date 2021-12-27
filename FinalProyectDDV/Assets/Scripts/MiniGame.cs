@@ -65,8 +65,8 @@ public class MiniGame : MonoBehaviour
             GameObject.Find("MiniGameMsg").GetComponent<TextMesh>().text = ("YOU WON!\nA portal has opened");
             colCheck = 1;
 
-            GameObject.Find("PortalGreenIdle").transform.position = new Vector3(11, 6, 24);
-            GameManager.setPortalState(true);
+            GameObject.Find("PortalExtraLevel").transform.position = new Vector3(11, 6, 24);
+            GameManager.setExtraLevelGreenPortalState(true);
             
             if (extraLvlEvents.mgWonEvent != null)
             {

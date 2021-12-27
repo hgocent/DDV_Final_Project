@@ -6,27 +6,25 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
-        /*if (GameManager.isMiniGameWon == false)
-        {
-            GameObject.Find("/Player/Shield").SetActive(false);
-        }*/
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.getPortalState() == true)
+        if(GameManager.getExtraLevelGreenPortalState() == true)
         {
             //Debug.Log("Portal extra level has been opened");
             
             if (SceneManager.GetActiveScene().name == "Nivel_1")//if (gameObject.tag == "PlayerL1")
             {
-                GameObject.Find("Player").transform.position = new Vector3(-17f, 1.01f, 5);
+                GameObject.Find("Player").transform.position = new Vector3(-10.5f,6.57000017f,-79f);
                 
-                GameManager.setPortalState(false);
+                GameManager.setExtraLevelGreenPortalState(false);
 
             }/*else if (SceneManager.GetActiveScene().name == "Extralvl_1")
             {
@@ -34,12 +32,49 @@ public class SceneController : MonoBehaviour
             }*/
             //
         }
+
     }
 
     private void OnTriggerEnter(Collider other) 
     {
-        //Debug.Log(other.tag);
+        //Debug.Log(gameObject.name);
         
+        switch (gameObject.name)
+        {
+            case "PortalExtraLevel":
+                if (SceneManager.GetActiveScene().name == "Nivel_1")
+                {
+                    SceneManager.LoadScene("Extralvl_1");
+
+                }else if (SceneManager.GetActiveScene().name == "Extralvl_1")
+                {
+                    SceneManager.LoadScene("Nivel_1");
+                }
+            break;
+
+            case "PortaltoLevel2":
+                SceneManager.LoadScene("Nivel_2");
+            break;
+
+            case "a":
+                
+            break;
+            
+            case "b":
+                
+            break;
+            
+            case "c":
+               
+            break;
+            
+            default:
+                //print ("Incorrect");
+            break;
+        }
+
+
+
         /*if (other.tag=="PlayerL1")
         {
             SceneManager.LoadScene("Extralvl_1");
@@ -48,15 +83,8 @@ public class SceneController : MonoBehaviour
         {
             SceneManager.LoadScene("Nivel_1");
         }*/
-
-        if (SceneManager.GetActiveScene().name == "Nivel_1")
-        {
-            SceneManager.LoadScene("Extralvl_1");
-
-        }else if (SceneManager.GetActiveScene().name == "Extralvl_1")
-        {
-            SceneManager.LoadScene("Nivel_1");
-        }
+        
+        
         
     }
 }
