@@ -29,7 +29,7 @@ public class FloatingController : MonoBehaviour
     void Update()
     {
         //Debug.Log(CanHover);
-        if (CanHover)
+        if (CanHover == true)
         {
             switch (gameObject.name)
             {
@@ -47,12 +47,15 @@ public class FloatingController : MonoBehaviour
             break;
             case "floor_hover2":
                 newY = Mathf.Sin(Time.time * 3f);
+                FloorHeight = 4f;
             break;
             case "floor_hover3":
-                newY = Mathf.Sin(Time.time * 5f);
+                newY = Mathf.Sin(Time.time * 2.7f);
+                FloorHeight = 8f;
             break;
             case "floor_hover4":
-                newY = Mathf.Sin(Time.time * 6f);
+                newY = Mathf.Sin(Time.time * 3.1f);
+                FloorHeight = 9f;
             break;
             default:
                 //print ("Incorrect");
@@ -68,30 +71,30 @@ public class FloatingController : MonoBehaviour
             }
 
         }
-        
-        void OnTriggerEnter(Collider other) 
+    }
+        /*void OnTriggerEnter(Collider other) 
         {
             Debug.Log(other.gameObject.name);
-        }
+        }*/
 
         void OnCollisionEnter(Collision collider)
         {   
-            Debug.Log(collider.gameObject.name);
-            if (collider.gameObject.name == "Player") //&& gameObject.name.Substring(0, 11) == "floor_hover")
+            //Debug.Log(collider.gameObject.name);
+            if (collider.gameObject.name == "Player" && gameObject.name.Substring(0, 11) == "floor_hover")
             {
                 CanHover = false;
-                Debug.Log(CanHover);
+                //Debug.Log(CanHover);
             }
         
         }
         
-        void OnCollisionExit(Collision collider)
+        /*void OnCollisionExit(Collision collider)
         {   
             
             CanHover = true;
         
-        }
+        }*/
         
 
-    }
+    
 }
