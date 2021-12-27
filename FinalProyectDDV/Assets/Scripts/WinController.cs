@@ -6,6 +6,7 @@ public class WinController : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject Xdoor;
+    [SerializeField] private GameObject kPad;
     private bool exitDoorOpened = false;
     void Start()
     {
@@ -32,14 +33,15 @@ public class WinController : MonoBehaviour
         if(other.gameObject.name == "Player")
         {
             Debug.Log("2d panel for entering pin");
+            kPad.SetActive(true);
         }
 
-        OpenDoors();
+        //OpenDoors();
         
     }
 
     //move towards a target at a set speed.
-    private void OpenDoors() 
+    public void OpenDoors() 
     {
         float speed = 1f;
         
