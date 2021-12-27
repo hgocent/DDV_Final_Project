@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
         //deathsText = GameObject.Find("/HUD/Canvas/Panel/DeathText");
     
-        Debug.Log("Lives: " + playerLives);
+        //Debug.Log("Lives: " + playerLives);
 
         soldier_events.OnEnemyDeath += CountEnemyDeath;
         player_events.OnPlayerDeath += ManageLives;
@@ -93,19 +93,16 @@ public class GameManager : MonoBehaviour
 
         if(getEnemyDeathCount() > 0)
         {
-            Debug.Log("Maté un enemigo, debo mover el portal. " + GameObject.Find("/ENVIROMENT--/ExtraLvl").transform.position);
             GameObject.Find("/ENVIROMENT--/ExtraLvl").transform.position = new Vector3(-11f,8f,-80f);
         }
 
-        //Debug.Log("Enemigos muertos: " + EnemyDeathCount);
-        //deathsText.GetComponent<Text>().text = EnemyDeathCount.ToString(); //set value on HUD
     }
 
     private void ManageLives()
     {   
         
         playerLives --;
-        Debug.Log("You lost 1 life");
+        //Debug.Log("You lost 1 life");
         //Debug.Log("Lives left: " + playerLives);
         
         if (playerLives <= 0)
@@ -119,7 +116,6 @@ public class GameManager : MonoBehaviour
             //QUE SE DETENGA EL JUEGO
             Time.timeScale = 0;
         }
-        //livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
 
     }
 
@@ -127,7 +123,6 @@ public class GameManager : MonoBehaviour
     {
         playerLives = 1;
         ManageLives();
-        
         
     }
 

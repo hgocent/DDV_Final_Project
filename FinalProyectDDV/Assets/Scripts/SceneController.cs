@@ -26,11 +26,7 @@ public class SceneController : MonoBehaviour
                 
                 GameManager.setExtraLevelGreenPortalState(false);
 
-            }/*else if (SceneManager.GetActiveScene().name == "Extralvl_1")
-            {
-                GameObject.Find("Player").transform.position = new Vector3(-40f, 1f, 18);
-            }*/
-            //
+            }
         }
 
     }
@@ -72,17 +68,6 @@ public class SceneController : MonoBehaviour
                 //print ("Incorrect");
             break;
         }
-
-
-
-        /*if (other.tag=="PlayerL1")
-        {
-            SceneManager.LoadScene("Extralvl_1");
-        }
-        else if (other.tag=="PlayerL1a")
-        {
-            SceneManager.LoadScene("Nivel_1");
-        }*/
         
         
         
