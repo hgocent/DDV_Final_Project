@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public static bool isMiniGameWon;
     public static int EnemyDeathCount = 0;
     
+    int killsNivel2;
     public static bool pProcessingCheckmark;
 
     public static String thisLevel;
@@ -100,10 +102,27 @@ public class GameManager : MonoBehaviour
     {
         EnemyDeathCount++;
 
-        if(getEnemyDeathCount() > 0)
+       switch (SceneManager.GetActiveScene().name)
         {
-            GameObject.Find("/ENVIROMENT--/ExtraLvl").transform.position = new Vector3(-11f,8f,-80f);
+            case "Nivel_1":
+                if(getEnemyDeathCount() > 0)
+                {
+                    GameObject.Find("/ENVIROMENT--/ExtraLvl").transform.position = new Vector3(-11f,8f,-80f);
+                }
+            break;
+            case "Nivel_2":
+                
+                killsNivel2 ++;
+
+                if(killsNivel2 > 0)
+                {   
+                    //Abro puerta hacia la salida con pin keypad
+                    GameObject.Find("/Environment/DoorToKeyPadRoom").SetActive(false);
+                }
+            break;
         }
+
+        
 
     }
 

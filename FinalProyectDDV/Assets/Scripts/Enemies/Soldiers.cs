@@ -60,18 +60,19 @@ public class Soldiers : MonoBehaviour
         
     }
 
-   public void OnTriggerEnter(Collider other) {
+   public void OnTriggerEnter(Collider other) 
+   {
+       
        if (other.tag == "Laser")
        {
-           
-           enemyHp -= 1f;
-           
-           if (enemyHp <= 0)
-           {
-                //Debug.Log(enemyHp);
-                soldier_events.OnEnemyDeath();
+            //Debug.Log(enemyHp);
+            enemyHp -= 1f;
+
+            if (enemyHp <= 0)
+            { 
                 Destroy(gameObject);
-           }
+                soldier_events.OnEnemyDeath();
+            }
            
            
        }
