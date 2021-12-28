@@ -12,7 +12,7 @@ public class SpaceShipController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerL1")
         {
             GameManager.wCanv.SetActive(true);
         }
