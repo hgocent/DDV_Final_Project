@@ -12,10 +12,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject laserOrigin; 
     [SerializeField] private GameObject laserBullet;
     [SerializeField] private GameObject powerUp; 
+    private GameObject powerUpLife;
     [SerializeField] private float laserCooldown = 0.5f;
     [SerializeField] private float laserShoot = 1f;
     [SerializeField] private float distanceLaser = 20f;
-    private EnergyBarController energyBar; // ex [SerializeField] 
+    private EnergyBarController energyBar; // ex [SerializeField]
     [SerializeField] private float speedBullet = 0.5f;
     [SerializeField] private AudioSource fireSound;
     
@@ -29,13 +30,16 @@ public class PlayerAttack : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        energyBar = GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<EnergyBarController>(); //////////////////////
-        //currentEnergy = maxEnergy;
-        //energyBar.SetMaxEnergy(maxEnergy);
-        
-        //GameManager.setPEnergyMeter(1f);
-        //energyBar.GetComponent<Image>().fillAmount = GameManager.getEnergyMeter();
+    {   
+        if(GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<EnergyBarController>() != null)
+        {
+            energyBar = GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<EnergyBarController>(); //////////////////////
+        }
+              
+        if (GameObject.Find("PowerUpLife")!= null)
+        {
+            powerUpLife = GameObject.Find("PowerUpLife");
+        }
     }
 
     // Update is called once per frame
@@ -135,5 +139,11 @@ public class PlayerAttack : MonoBehaviour
             //old local functions - energyBar.SetEnergy(currentEnergy);
             
         }
+        else if (other.tag == "PowerUpLife")
+        {
+            GameManager.addLivesToPlayer(1);
+            powerUpLife.SetActive(false);
+        }
+
     }
 }

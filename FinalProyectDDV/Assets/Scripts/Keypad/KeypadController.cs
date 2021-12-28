@@ -1,12 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class KeypadController : MonoBehaviour
 {
     [SerializeField] private InputField code;
     [SerializeField] private GameObject keyPadpanel;
-    [SerializeField] private WinController wController;
+    private WinController wController;
 
+    private Text kPadText;
     private string correctPass = "8925";
     
         
@@ -23,75 +27,94 @@ public class KeypadController : MonoBehaviour
     private string delete = "";
     
 
-    
-    
+    void Start()
+    {
+        kPadText = GameObject.Find("/HUD/KeypadCanvas/Panel/InputField/Placeholder").GetComponent<Text>();
+    }
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "Nivel_2")
+        {
+            wController = GameObject.Find("/Environment/ATM_Cyan/PanelTrigger").GetComponent<WinController>();
+        }
+    }
     public void OnClickEnter0()
     {
-        Debug.Log("0");
+        
         code.text += addNumber0;
     }
     public void OnClickEnter1()
     {
-        Debug.Log("1");
+        
         code.text += addNumber1;
     }
     public void OnClickEnter2()
     {
-        Debug.Log("2");
+        
         code.text += addNumber2;
     }
     public void OnClickEnter3()
     {
-        Debug.Log("3");
+        
         code.text += addNumber3;
     }
     public void OnClickEnter4()
     {
-        Debug.Log("4");
+        
         code.text += addNumber4;
     }
     public void OnClickEnter5()
     {
-        Debug.Log("5");
+        
         code.text += addNumber5;
     }
     public void OnClickEnter6()
     {
-        Debug.Log("6");
+        
         code.text += addNumber6;
     }
     public void OnClickEnter7()
     {
-        Debug.Log("7");
+        
         code.text += addNumber7;
     }
     public void OnClickEnter8()
     {
-        Debug.Log("8");
+        
         code.text += addNumber8;
     }
     public void OnClickEnter9()
     {
-        Debug.Log("9");
+        
         code.text += addNumber9;
     }
     
     public void OnClickDelete()
     {
-        Debug.Log("Delete");
+        kPadText.text = "INSERT CODE";
         code.text = delete;
     }
 
     public void OnClickOK()
     {
+        int txtlives = GameManager.getLives() -1;
+
         if (code.text != correctPass)
         {
+
             code.text = delete;
+            kPadText.text = "WRONG! - " + txtlives.ToString() + " Attempt(s) Left";
+            //restar vida
+            
+            player_events.OnPlayerDeath();
         }
         else 
         {
-            keyPadpanel.SetActive(false);
+            //keyPadpanel.SetActive(false);
+            Time.timeScale = 1f;
             wController.OpenDoors();
+            Destroy(keyPadpanel);
+            
         }
 
     }

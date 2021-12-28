@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
 
     //[SerializeField] private int playerLives;
     [SerializeField] private GameObject gameoverPanel;
-    
+    public static GameObject kPad; //KeypadCanvas
+    public static GameObject wCanv; //WinCanvas
+
     //private GameObject livesText;
     //private GameObject deathsText;
 
@@ -63,6 +65,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        kPad = GameObject.Find("/HUD/KeypadCanvas");
+        wCanv = GameObject.Find("/HUD/WinCanvas");
+        
+        kPad.SetActive(false);
+        wCanv.SetActive(false);
+
+
         /*gameoverImg = gameoverPanel.GetComponent<Image>(); //New
         gameoverImg.enabled = false; //New
 
@@ -115,6 +124,11 @@ public class GameManager : MonoBehaviour
 
             //QUE SE DETENGA EL JUEGO
             Time.timeScale = 0;
+
+            if(kPad.activeSelf == true)
+            {
+                kPad.SetActive(false);
+            }
         }
 
     }
@@ -164,6 +178,10 @@ public class GameManager : MonoBehaviour
         return isExtraLevelGreenPortalOpen;
     }
 
+    public static void addLivesToPlayer(int a)
+    {
+        playerLives += a;
+    }
     public static bool setPprocessingCheckmark()
     {
         return (pProcessingCheckmark = !pProcessingCheckmark);

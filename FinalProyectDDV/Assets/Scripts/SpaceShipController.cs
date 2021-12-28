@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class SpaceShipController : MonoBehaviour
 {
-    [SerializeField] private GameObject textWin;// Start is called before the first frame update
+    //private GameObject textWin;
     
+    void Start()
+    {
+        //textWin = GameManager.wCanv;
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player")
         {
-            textWin.SetActive(true);
+            GameManager.wCanv.SetActive(true);
         }
     }
 }

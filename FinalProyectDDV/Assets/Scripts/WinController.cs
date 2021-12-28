@@ -6,12 +6,12 @@ public class WinController : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject Xdoor;
-    [SerializeField] private GameObject kPad;
+    private GameObject kPad; //ex serialized
     private bool exitDoorOpened = false;
     void Start()
     {
         Xdoor = GameObject.Find("/Environment/DoorToKeyPadRoom");
-        
+        kPad = GameManager.kPad; 
     }
 
     // Update is called once per frame
@@ -32,8 +32,13 @@ public class WinController : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
-            Debug.Log("2d panel for entering pin");
-            kPad.SetActive(true);
+            //Debug.Log("enter pin");
+            if (kPad != null)
+            {
+               kPad.SetActive(true); 
+               Time.timeScale = 0;
+            }
+            
         }
 
         //OpenDoors();
@@ -61,10 +66,11 @@ public class WinController : MonoBehaviour
             (directionOfTravel02.y * speed * Time.deltaTime),
             (directionOfTravel02.z * speed * Time.deltaTime),
             Space.World);*/
+
             GameObject.Find("Door_Left_01").transform.position = directionOfTravel01;
             GameObject.Find("Door_Left_02").transform.position = directionOfTravel02;    
                
-            
+
             exitDoorOpened = true;
         }
         
