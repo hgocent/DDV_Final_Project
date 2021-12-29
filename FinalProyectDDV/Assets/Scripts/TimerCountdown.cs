@@ -39,6 +39,7 @@ public class TimerCountdown : MonoBehaviour
         {
            Debug.Log("Game Over");
            gameOverPanel.SetActive(true);
+           Time.timeScale = 0;
         }
     }
 
