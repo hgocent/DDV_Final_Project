@@ -1,25 +1,36 @@
 # DDV_Final_Project
 Videogame development project on Unity3D. CoderHouse Course. 
-Video-game development project on Unity3D. CoderHouse Course.
 
 # Explicación de Mecánica y consideraciones generales
+Historia: 
+Se encuentra detallada en la escena de introducción del juego.
 
-Historia:
-El videojuego se trata de un Alienígena que estrella su nave con la tierra y es raptado por ej ejército para estudiar su tecnología.
-En un momento el Alienígena escapa de su captura pero debe pasar por distintas escenas para finalmente salir del area de captura, en su camino deberá ir eliminando a los enemigos humanos del ejército (utilizando su visión de rayos o armas terrestres que pueda obtener) y recolectar items que le servirán luego para reparar su nave y escapar de la Tierra.
+Objetivo general del juego:
+Escapar del laboratorio y del ejercito humano para poder llegar a la nave para escapar.
 
-Inputs:
-- movimiento con teclas: a, w, s y d
-- saltar: barra espaciadora
-- visión de cámara de personaje: movimiento del mouse.
-- aim / apuntar: click derecho
-- disparar rayos láser: click izquierdo
-- correr shift izquierdo
-- ajustar velocidad de movimiento: rueda del mouse (scroll)
-- cambio de cámaras: F1 (Cámara de Player en 3ra persona), F2 (cámara de vigilancia de visualización tipo Top Down)
+Controles del juego:
+W-A-S-D: Movimiento del Player
+Shift: Sprint del Player
+Espaciadora: Salto del Player
+Click Derecho: Mira para poder disparar
+Click Izquierdo: Disparo (Se debe estar con la mira para disparar)
+Click en la rueda del mouse: Cambia la mira de posición
+Rueda del mouse: Modifica la velocidad de caminar del player
+F1 - F2: cambio de cámaras; F1 (Cámara de Player en 3ra persona), F2 (cámara de vigilancia de visualización tipo Top Down)
 
-Objetivos y mecánicas de juego:
-- eliminar enemigos (en la pre-entrega solo se puede eliminar a los 2 enemigos que disparan)
-- ingresar al sub-nivel oculto y volver. Para salir deberá activar el portal jugando un minigame. (Para la entrega final se agregará un elemento que debe recoger antes de salir)
-- Utilizar el item encontrado para poder pasar por el portal que lo llevará al proximo nivel. (Este punto aun no se ha desarrollado para la pre-entrega)
-- Para la entrega final listaremos de que se va a tratar el objetivo final del juego para ganar.
+Mecánicas:
+Nivel 0(Laboratorio): Se debe encontrar el portal que lleva al proximo nivel antes de que termine el tiempo o el jugador pierde, el portal solo permanecerá por pocos segundos en su posición, luego se moverá a otra ubicación del laboratorio. Y se deben recordar los números que aparecen en los distintos niveles, podrían ser útiles mas adelante.
+
+Nivel 1 (Laboratorio-Exterior): Se debe eliminar o esquivar a los enemigos para poder acceder al nivel 2. Dentro del nivel 1 contamos
+con un regenerador de energía, y si se elimina a los enemigos se podrá acceder a un nivel secreto!!! Dentro del nivel secreto deberá realizar un minigame que consiste en disparar un campo de fuerza para coincidir el color de 3 círculos flotantes. 
+
+Nivel 2 (Plano superior-Naves de escape): Para acceder a donde se encuentra el hangar de salida con su nave, se deberá eliminar a todos los enemigos de este nivel, ya que en tanto eso no ocurra el acceso se encontrará bloqueado.
+En este nivel encontraremos una vida extra (si nos arriesgamos a cruzar paneles flotantes para conseguirla).
+También contamos en este nivel con un regenerador de energía para los disparos.
+
+Bugs encontrados por nosotros:
+- El salto de player llega mas alto de lo que debería cuando colisiona con ciertos objetos.
+- La mira del player a veces queda descentrada de donde se dirige el disparo laser.
+- Se dan colisiones extrañas en el nivel 2 con el player.
+- Los enemigos del nivel 1 debería frenar al ver al player pero los mismos no se detienen (esto se consulto a un tutor pero no fue
+respondida la consulta).
