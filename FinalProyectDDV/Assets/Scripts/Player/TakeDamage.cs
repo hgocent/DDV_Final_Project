@@ -108,7 +108,7 @@ public class TakeDamage : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-            Damage(0.2f);
+            Damage(0.12f);
         }
         
     }

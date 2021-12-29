@@ -9,8 +9,8 @@ public class SoldierData : ScriptableObject
     [SerializeField] private float shootCooldown;
     [SerializeField] private float timeShoot;
     [SerializeField] private float hp;
-    [SerializeField] private float shield;
-    [SerializeField] private float damage;
+    //[SerializeField] private float shield;
+    //[SerializeField] private float damage;
     
 
     public float DistanceRay
@@ -45,21 +45,21 @@ public class SoldierData : ScriptableObject
         }
     }
 
-    public float Shield
+    /*public float Shield
     {
         get
         {
             return shield;
         }
-    }
+    }*/
 
-    public float Damage
+    /*public float Damage
     {
         get
         {
             return damage;
         }
-    }
+    }*/
 
     public void IncreaseTimeShoot(float time)
     {

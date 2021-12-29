@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
     private EnergyBarController energyBar; // ex [SerializeField]
     [SerializeField] private float speedBullet = 0.5f;
     [SerializeField] private AudioSource fireSound;
+    [SerializeField] private AudioSource pUpsound;
     
    //private float maxEnergy = 1f; //1f
     //private float currentEnergy;
@@ -131,6 +132,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "PowerUp")
         {
+            pUpsound.Play();
             Destroy(powerUp);
 
             GameManager.setPEnergyMeter(1f);

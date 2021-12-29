@@ -4,27 +4,27 @@ public class WaypointsMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private Transform target;
-    [SerializeField] private GameObject viewPlayerRC;
-    [SerializeField] Animator walkEnemy;
-    Vector3 currentPosition;
+    //[SerializeField] private GameObject viewPlayerRC;
+    //[SerializeField] Animator walkEnemy;
+    //Vector3 currentPosition;
 
 
     RaycastHit hit;
 
     private void Start() {
         transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
-        walkEnemy.SetBool("isAim", false);
+        //walkEnemy.SetBool("isAim", false);
     }
 
     private void Update() {
-
-        Patrolling();
+        transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
+        //Patrolling();
         
          
 
     }
 
-    void Patrolling()
+    /*void Patrolling()
     {  
         
 
@@ -49,7 +49,7 @@ public class WaypointsMovement : MonoBehaviour
         {
             transform.Translate(new Vector3(0, 0, speed * Time.deltaTime));
         }
-    }
+    }*/
         
     
     
