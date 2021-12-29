@@ -9,13 +9,14 @@ public class TimerCountdown : MonoBehaviour
 {   
     private Text CountdownText;
     private int minutesLeft = 1;
-    private int secondsLeft = 60;
+    private int secondsLeft = 30;
 
     private bool TakeAway = false;
 
     private bool triggered = false;
 
     private GameObject gameOverPanel;
+    [SerializeField] private GameObject CountDownMsg;
 
     // Start is called before the first frame update
     void Start()
@@ -63,8 +64,24 @@ public class TimerCountdown : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other) 
+    {    
+       if (triggered == false)
+       {
+           triggered = true;
+           Invoke("TurnOnMessage", 1f);
+           Invoke("TurnOffMessage", 10f);
+       }
+       
+    }
+
+     void TurnOnMessage()
    {
-       triggered = true;
+       CountDownMsg.SetActive(true);
+   }
+   void TurnOffMessage()
+   {
+       CountDownMsg.SetActive(false);
    }
 
+   
 }
