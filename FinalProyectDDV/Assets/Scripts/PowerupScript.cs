@@ -13,22 +13,12 @@ public class PowerupScript : MonoBehaviour
     {   
         for (int i=3; i<9; i++)
         {
-            //Debug.Log(i.ToString());
+
             hovers.Add(GameObject.Find("/Environment/floor_hover" + i.ToString()) );
-            //hovers[i] = GameObject.Find("/Environment/floor_hover4");
+            
 
         }
         
-        /*for (int i=0; i<6; i++)
-        {
-            if(i>2)
-            {
-               hovers[i].SetActive(false); 
-            }
-            
-        }*/
-        //hovers[0].SetActive(false); 
-        //hovers[1].SetActive(false);
 
         hovers[2].SetActive(false);
         hovers[3].SetActive(false);

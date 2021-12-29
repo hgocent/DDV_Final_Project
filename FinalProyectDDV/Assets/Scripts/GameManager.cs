@@ -30,13 +30,7 @@ public class GameManager : MonoBehaviour
     public static GameObject kPad; //KeypadCanvas
     public static GameObject wCanv; //WinCanvas
 
-    //private GameObject livesText;
-    //private GameObject deathsText;
-
-    //Image gameoverImg;
-    //Text gameoverTxt;
-    //[SerializeField] private TakeDamage playerScript;
-
+    
     //Make singleton
     private void Awake()
     {   
@@ -51,13 +45,7 @@ public class GameManager : MonoBehaviour
             isExtraLevelGreenPortalOpen = false;
             DontDestroyOnLoad(gameObject);
             
-
-        }/*else if (instance != this) //Instance is not the same as the one we have, destroy old one, and reset to newest one
-        {
-            Destroy(instance.gameObject);
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }*/
+        }
         else
         {
             Destroy(gameObject);
@@ -73,20 +61,6 @@ public class GameManager : MonoBehaviour
         kPad.SetActive(false);
         wCanv.SetActive(false);
 
-
-        /*gameoverImg = gameoverPanel.GetComponent<Image>(); //New
-        gameoverImg.enabled = false; //New
-
-        gameoverTxt = gameoverPanel.transform.GetChild(0).GetComponent<Text>(); //New
-        gameoverTxt.enabled = false; //New
-        */
-
-        //livesText = GameObject.Find("/HUD/Canvas/Panel/LivesText");
-        //livesText.GetComponent<Text>().text = playerLives.ToString(); //set value on HUD
-
-        //deathsText = GameObject.Find("/HUD/Canvas/Panel/DeathText");
-    
-        //Debug.Log("Lives: " + playerLives);
 
         soldier_events.OnEnemyDeath += CountEnemyDeath;
         player_events.OnPlayerDeath += ManageLives;
@@ -114,7 +88,7 @@ public class GameManager : MonoBehaviour
                 
                 killsNivel2 ++;
 
-                if(killsNivel2 > 0)
+                if(killsNivel2 > 8)
                 {   
                     //Abro puerta hacia la salida con pin keypad
                     GameObject.Find("/Environment/DoorToKeyPadRoom").SetActive(false);
@@ -130,17 +104,14 @@ public class GameManager : MonoBehaviour
     {   
         
         playerLives --;
-        //Debug.Log("You lost 1 life");
-        //Debug.Log("Lives left: " + playerLives);
+       
         
         if (playerLives <= 0)
         {
             player_events.OnPlayerDeath -= ManageLives;
 
-            gameoverPanel.SetActive(true);  //Old
-            //gameoverImg.enabled = true; //New
-            //gameoverTxt.enabled = true; //New
-
+            gameoverPanel.SetActive(true); 
+        
             //QUE SE DETENGA EL JUEGO
             Time.timeScale = 0;
 
@@ -205,12 +176,12 @@ public class GameManager : MonoBehaviour
     {
         return (pProcessingCheckmark = !pProcessingCheckmark);
     }
-    public static void setLife(float newLife) //ex decreaseLife
+    public static void setLife(float newLife) 
     {
         playerLifeBar = newLife;
     }
 
-    public static void setShieldMeter(float newShieldValue) //ex decreaseShield
+    public static void setShieldMeter(float newShieldValue) 
     {
         PlayerShieldBar = newShieldValue;
     }

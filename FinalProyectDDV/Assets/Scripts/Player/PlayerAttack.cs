@@ -68,12 +68,6 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        //temporal
-        /*if (SceneManager.GetActiveScene().name == "Extralvl_1" && counter != 1)
-        {
-            energyBar = GameObject.Find("/HUD/Canvas/Panel/Energy bar").GetComponent<EnergyBarController>(); //////////////////////
-            counter = 1;
-        }*/
 
     }
 
@@ -82,15 +76,15 @@ public class PlayerAttack : MonoBehaviour
 
     private void LaserShoot()
     {   
-        Vector3 hitPosition; //new
-        Vector3 direction; //New
+        Vector3 hitPosition; 
+        Vector3 direction; 
 
         if(Input.GetKey("mouse 0") && Input.GetKey("mouse 1"))
         {   
             //Debug.Log("mouse click");
 
-            hitPosition = cam.transform.position + cam.forward * 10; //New
-            direction = hitPosition - laserOrigin.transform.position; //New
+            hitPosition = cam.transform.position + cam.forward * 10; //
+            direction = hitPosition - laserOrigin.transform.position; //
 
             canShoot = false;
             laserShoot = 0;
@@ -101,9 +95,9 @@ public class PlayerAttack : MonoBehaviour
 
            //a.GetComponent<Rigidbody>().AddForce(laserOrigin.transform.TransformDirection(Vector3.forward) * distanceLaser, ForceMode.Impulse);
 
-            a.GetComponent<Rigidbody>().AddForce((direction.normalized * distanceLaser)*speedBullet, ForceMode.Impulse); //new
+            a.GetComponent<Rigidbody>().AddForce((direction.normalized * distanceLaser)*speedBullet, ForceMode.Impulse); //
             
-            //old local functions - DecreaseEnergy(energyShoot);
+            
             GameManager.setPEnergyMeter(GameManager.getEnergyMeter()-energyShoot);
             energyBar.SetEnergy(GameManager.getEnergyMeter());
             
