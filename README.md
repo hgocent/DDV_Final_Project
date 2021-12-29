@@ -34,3 +34,4 @@ Bugs encontrados por nosotros:
 - Se dan colisiones extrañas en el nivel 2 con el player.
 - Los enemigos del nivel 1 debería frenar al ver al player pero los mismos no se detienen (esto se consulto a un tutor pero no fue
 respondida la consulta).
+- En el nivel oculto dentro del nivel 1, hay 3 cilindros para la ejecucion del minigame en el cual uno de los cilindros no se colorea cuando se corre el juego desde el ejecutable, pero funciona bien en Unity. A pesar de ello, el juego puede continuar perfectamente ya que la lógica para ganar no está determinada por los colores sino que por una función matemática
